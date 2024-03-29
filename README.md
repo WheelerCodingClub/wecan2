@@ -41,6 +41,10 @@ This will be a website where people can post their clubs and activities on, and 
   - [ ] design
   - [ ] layout
   - [ ] functionality
+- [ ] club management page
+  - [ ] design
+  - [ ] layout
+  - [ ] functionality
 - [ ] club announcements page
   - [ ] design
   - [ ] layout
@@ -51,10 +55,27 @@ This will be a website where people can post their clubs and activities on, and 
   - [ ] functionality
   - [ ] authentication
 - [ ] backend
-  - [ ] secure user authentication (likely using firebase?)
+  - [ ] authentication
+    - likely using [Firebase Authentication](https://firebase.google.com/docs/auth/)?
   - [ ] database
-    - [ ] user info
-    - [ ] club info
-    - [ ] club posts and announcements
-    - [ ] provider (likely firebase)
-  - [ ] functions to get info from database and modify data in database (once again, firebase likely)
+    - [ ] provider
+      - likely using [Cloud Firestore](https://firebase.google.com/docs/firestore/)? if not that then probably PostgreSQL from somewhere
+    - we need to store:
+      - user info
+        - [ ] name/email
+        - [ ] authentication data (OAuth stuff, session stuff, however that works)
+        - as it is a club discovery site, I don't imagine there being much front-facing user information, so no profile data. *maybe* profile pictures, actually
+      - club info
+        - [ ] name/description
+        - [ ] tags/keywords/categories for search
+        - [ ] visibility: hidden from search (unlisted) / hidden from view (private)
+        - [ ] logo image
+        - [ ] banner image
+        - ...and more? contacts, meeting times and locations, people involved (leadership/sponsor?), etc.
+      - club posts
+        - [ ] title/content
+        - [ ] banner image?
+      - club access
+        - there needs to be a permission system. a club owner must be able to appoint users to edit club information and (separately!) appoint users to make posts and so on.
+        - there likely also needs to be admin users that can edit any club in case a Situation happens, but that is a separate thing
+  - [ ] functions to get info from database and modify data in database
