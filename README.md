@@ -43,8 +43,8 @@ This will be a website where people can post their clubs and activities on, and 
   - [ ] functionality
 - [ ] club announcements page
   - [ ] design
-    - [ ] layout
-    - [ ] functionality
+  - [ ] layout
+  - [ ] functionality
 - [ ] login page
   - [ ] design
   - [ ] layout
