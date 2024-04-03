@@ -1,13 +1,22 @@
 <style>
-    nav {
-        border-bottom: 1px solid black;
-    }
-    h1 a {
-        text-decoration: none;
-    }
 </style>
 <nav>
-    <h1><a href="/">Wecan2</a></h1>
+    <div class="container">
+        <a href="/">
+            <span class="title">Wecan2</span>
+        </a>
+        <ul class="links-left">
+            <li><a href="/">Home</a></li>
+            <li><a href="/#">About</a></li>
+            <li><a href="/#">Contact Us</a></li>
+        </ul>
+        <ul class="links-right">
+            <li><a href="/#">Join a Club</a></li>
+            <li><a href="/#">Register School</a></li>
+            <li><a href="/#">Login</a></li>
+            <li><a href="/#">Register</a></li>
+        </ul>
+    </div>
 </nav>
 
 <slot />
