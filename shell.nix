@@ -1,8 +1,11 @@
 { pkgs ? import <nixpkgs> { } }:
 
+let
+  nodePackages = pkgs.nodePackages_latest;
+in
 pkgs.mkShell {
-    packages = [
-        pkgs.nodePackages.npm
-        pkgs.nodePackages.nodejs
-    ];
+  packages = [
+    nodePackages.nodejs
+    nodePackages.npm
+  ];
 }
