@@ -1,3 +1,36 @@
+<script lang="ts">
+    import type { LayoutData } from "./$types";
+
+    export let data: LayoutData;
+</script>
+
+<nav>
+    <div class="container">
+        <a href="/">
+            <span class="title">Wecan2</span>
+        </a>
+        <ul class="links-left">
+            <li><a href="/">Home</a></li>
+            <li><a href="/#">About</a></li>
+            <li><a href="/#">Contact Us</a></li>
+        </ul>
+        <ul class="links-right">
+            <li><a href="/#">Join a Club</a></li>
+            <li><a href="/#">Register School</a></li>
+            {#if data.user}
+                <li><a href="/logout">Log Out</a></li>
+            {:else}
+                <li><a href="/login">Log In</a></li>
+                <li><a href="/register">Register</a></li>
+            {/if}
+        </ul>
+    </div>
+</nav>
+
+<main>
+    <slot />
+</main>
+
 <style>
     nav {
         padding: .5rem 1rem;
@@ -40,23 +73,3 @@
         list-style-type: none;
     }
 </style>
-<nav>
-    <div class="container">
-        <a href="/">
-            <span class="title">Wecan2</span>
-        </a>
-        <ul class="links-left">
-            <li><a href="/">Home</a></li>
-            <li><a href="/#">About</a></li>
-            <li><a href="/#">Contact Us</a></li>
-        </ul>
-        <ul class="links-right">
-            <li><a href="/#">Join a Club</a></li>
-            <li><a href="/#">Register School</a></li>
-            <li><a href="/#">Login</a></li>
-            <li><a href="/#">Register</a></li>
-        </ul>
-    </div>
-</nav>
-
-<slot />
