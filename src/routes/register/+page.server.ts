@@ -14,6 +14,7 @@ export const actions: Actions = {
         const name = data.get("name");
         const email = data.get("email");
         const password = data.get("password");
+        const confirmPassword = data.get("confirmPassword");
 
         const sfail = (status: number, error: Error) => fail(status, { name, email, error });
 
@@ -32,7 +33,10 @@ export const actions: Actions = {
         if (password.length < 8) return sfail(400, "password_short");
         if (password.length > 72) return sfail(400, "password_long");
 
-        // TODO: repeat password
+        if (!confirmPassword) return sfail(400, "confirmPassword_missing");
+        if (typeof confirmPassword !== "string") return sfail(400, "confirmPassword_invalid");
+
+        if (password !== confirmPassword) return sfail(400, "password_confirm");
 
         // TODO: registration
 
