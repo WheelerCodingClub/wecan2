@@ -20,11 +20,11 @@
     {/if}
     <label>
         Email
-        <input name="email" type="email" value={form?.email ?? ""} />
+        <input name="email" type="email" required value={form?.email ?? ""} />
     </label>
     <label>
         Password
-        <input name="password" type="password" />
+        <input name="password" type="password" required />
     </label>
     <button>Log in</button>
 </form>
