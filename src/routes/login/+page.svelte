@@ -5,7 +5,7 @@
 
     export let form: ActionData;
 
-    // TODO: better presentation of these hints
+    // TODO: better presentation of these hints (please feel free to tear this out, it sucks)
     const errorMessages: Record<Error, string> = {
         email_missing: "Email address is required.",
         email_invalid: "Invalid email address.",

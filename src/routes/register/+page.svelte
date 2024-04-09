@@ -5,7 +5,7 @@
 
     export let form: ActionData;
 
-    // TODO: better presentation of these hints
+    // TODO: better presentation of these hints (please feel free to tear this out, it sucks)
     const errorMessages: Record<Error, string> = {
         name_missing: "Name is required.",
         name_invalid: "Invalid name.",
