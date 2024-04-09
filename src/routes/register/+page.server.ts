@@ -11,10 +11,10 @@ export const actions: Actions = {
         const data = await request.formData();
 
         const email = data.get("email");
-        if (!email) return fail(400, { email, missing: true });
-
         const password = data.get("password");
-        if (!password) return fail(400, { email, missing: true });
+
+        // missing fields
+        if (!email || !password) return fail(400, { email, missing: true });
 
         // TODO: registration
 
