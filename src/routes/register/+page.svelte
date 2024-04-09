@@ -26,15 +26,15 @@
     {/if}
     <label>
         Name
-        <input name="name" type="text" value={form?.name ?? ""} />
+        <input name="name" type="text" required value={form?.name ?? ""} />
     </label>
     <label>
         Email
-        <input name="email" type="email" value={form?.email ?? ""} />
+        <input name="email" type="email" required value={form?.email ?? ""} />
     </label>
     <label>
         Password
-        <input name="password" type="password" />
+        <input name="password" type="password" required />
     </label>
     <button>Register</button>
 </form>
