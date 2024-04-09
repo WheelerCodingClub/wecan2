@@ -6,6 +6,34 @@ This is a wheeler coding club group project. The purpose of it is to create a pl
 
 ## Developing
 
+### Creating a database
+
+A [PostgreSQL](https://www.postgresql.org/) database is required to run the site.
+
+Once set up, you will need to create a `.env` file containing configuration environment variables:
+
+```ini
+PGHOST=localhost
+PGPORT=5432
+PGDATABASE=db
+PGUSERNAME=user
+PGPASSWORD=password
+```
+
+To migrate the database:
+
+```bash
+npm run migrate up
+```
+
+For more information about how to use the migration tool, [ley](https://github.com/lukeed/ley):
+
+```bash
+npm run migrate -- --help
+```
+
+### Starting a server
+
 After installing dependencies using `npm install`, start a development server:
 
 ```bash
@@ -55,16 +83,18 @@ This will be a website where people can post their clubs and activities on, and 
   - [ ] functionality
   - [ ] authentication
 - [ ] backend
-  - [ ] authentication
-    - likely using [Firebase Authentication](https://firebase.google.com/docs/auth/)?
+  - [ ] email/password authentication
+  - [ ] OAuth 2.0 authentication
   - [ ] database
     - [ ] provider
-      - likely using [Cloud Firestore](https://firebase.google.com/docs/firestore/)? if not that then probably PostgreSQL from somewhere
+      - probably PostgreSQL from somewhere, could be on the same server
+    - [x] migrations
     - we need to store:
       - user info
-        - [ ] name/email
-        - [ ] authentication data (OAuth stuff, session stuff, however that works)
-        - as it is a club discovery site, I don't imagine there being much front-facing user information, so no profile data. *maybe* profile pictures, actually
+        - [ ] basic account information (name, email, password)
+        - [ ] session data
+        - [ ] OAuth 2.0 data
+        - as it is a club discovery site, I don't imagine there being much front-facing user information, so very little profile data. probably just names and profile pictures
       - club info
         - [ ] name/description
         - [ ] tags/keywords/categories for search
