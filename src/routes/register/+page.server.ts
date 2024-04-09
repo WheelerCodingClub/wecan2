@@ -25,8 +25,6 @@ export const actions: Actions = {
         if (!email) return sfail(400, "email_missing");
         if (typeof email !== "string") return sfail(400, "email_invalid"); // TODO: check if email is valid
         if (email.length > 128) return sfail(400, "email_long"); // TODO: determine suitable max length
-        // TODO: check if email is already registered
-        // return sfail(400, "email_taken");
 
         if (!password) return sfail(400, "password_missing");
         if (typeof password !== "string") return sfail(400, "password_invalid");
@@ -37,6 +35,9 @@ export const actions: Actions = {
         if (typeof confirmPassword !== "string") return sfail(400, "confirmPassword_invalid");
 
         if (password !== confirmPassword) return sfail(400, "password_confirm");
+
+        // TODO: check if email is already registered
+        // return sfail(400, "email_taken");
 
         // TODO: registration
 
