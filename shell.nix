@@ -7,5 +7,6 @@ pkgs.mkShell {
   packages = [
     nodePackages.nodejs
     nodePackages.npm
+    pkgs.postgresql_16
   ];
 }
