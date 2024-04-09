@@ -5,6 +5,7 @@
 
     export let form: ActionData;
 
+    // TODO: better presentation of these hints
     const errorMessages: Record<Error, string> = {
         name_missing: "Name is required.",
         name_invalid: "Invalid name.",
@@ -17,6 +18,9 @@
         password_invalid: "Invalid password.",
         password_short: "That password is too short.",
         password_long: "That password is too long.",
+        password_confirm: "Password does not match.",
+        confirmPassword_missing: "Password confirmation is required.",
+        confirmPassword_invalid: "Invalid password confirmation.",
     };
 </script>
 
@@ -35,6 +39,10 @@
     <label>
         Password
         <input name="password" type="password" required />
+    </label>
+    <label>
+        Confirm password
+        <input name="confirmPassword" type="password" required />
     </label>
     <button>Register</button>
 </form>

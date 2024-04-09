@@ -9,4 +9,7 @@ export type Error =
     | "password_missing"
     | "password_invalid"
     | "password_short"
-    | "password_long";
+    | "password_long"
+    | "password_confirm"
+    | "confirmPassword_missing"
+    | "confirmPassword_invalid";
