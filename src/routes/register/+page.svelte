@@ -10,6 +10,10 @@
         <p>Missing required fields.</p>
     {/if}
     <label>
+        Name
+        <input name="name" type="text" value={form?.name ?? ""} />
+    </label>
+    <label>
         Email
         <input name="email" type="email" value={form?.email ?? ""} />
     </label>
