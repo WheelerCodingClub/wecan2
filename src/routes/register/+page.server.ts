@@ -1,6 +1,8 @@
 import type { Actions, PageServerLoad } from "./$types";
 import type { Error } from "./error";
 import { fail, redirect } from "@sveltejs/kit";
+import bcrypt from "bcrypt";
+import sql from "$lib/server/db";
 
 export const load: PageServerLoad = ({ locals: { user } }) => {
     if (user) redirect(303, "/");
@@ -18,6 +20,7 @@ export const actions: Actions = {
 
         const sfail = (status: number, error: Error) => fail(status, { name, email, error });
 
+        // validate form
         if (!name) return sfail(400, "name_missing");
         if (typeof name !== "string") return sfail(400, "name_invalid");
         if (name.length > 64) return sfail(400, "name_long"); // TODO: determine suitable max length
@@ -36,10 +39,27 @@ export const actions: Actions = {
 
         if (password !== confirmPassword) return sfail(400, "password_confirm");
 
-        // TODO: check if email is already registered
-        // return sfail(400, "email_taken");
+        // check if email is already registered
+        const [{ exists }] = await sql`
+            SELECT EXISTS (SELECT 1 FROM users WHERE email = ${email})
+        `;
+        if (exists) return sfail(400, "email_taken");
 
-        // TODO: registration
+        // register user
+        const passwordHash = await bcrypt.hash(password, 12);
+        await sql`
+            INSERT INTO users (
+                name,
+                email,
+                password,
+                created
+            ) VALUES (
+                ${name},
+                ${email},
+                ${passwordHash},
+                ${sql`now()`}
+            )
+        `;
 
         return { success: true };
     },
