@@ -13,6 +13,7 @@ A [PostgreSQL](https://www.postgresql.org/) database is required to run the site
 Once set up, you will need to create a `.env` file containing configuration environment variables:
 
 ```ini
+AUTH_SECRET=abcdefghijklmnopqrstuvwxyz1234567890
 PGHOST=localhost
 PGPORT=5432
 PGDATABASE=db

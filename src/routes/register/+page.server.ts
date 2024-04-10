@@ -1,6 +1,7 @@
 import type { Actions, PageServerLoad } from "./$types";
-import { Error } from "./error";
 import { fail, redirect } from "@sveltejs/kit";
+import { signToken, tokenCookieSettings } from "$lib/server/auth";
+import { Error } from "./error";
 import bcrypt from "bcrypt";
 import sql from "$lib/server/db";
 
@@ -10,7 +11,7 @@ export const load: PageServerLoad = ({ locals: { user } }) => {
 };
 
 export const actions: Actions = {
-    default: async ({ request }) => {
+    default: async ({ cookies, request }) => {
         const data = await request.formData();
 
         const name = data.get("name");
@@ -47,7 +48,7 @@ export const actions: Actions = {
 
         // register user
         const passwordHash = await bcrypt.hash(password, 12);
-        await sql`
+        const [{ id: userId }] = await sql`
             INSERT INTO users (
                 name,
                 email,
@@ -58,8 +59,12 @@ export const actions: Actions = {
                 ${email},
                 ${passwordHash},
                 ${sql`now()`}
-            )
+            ) RETURNING id
         `;
+
+        // generate token and log the user in
+        const token = signToken(userId);
+        cookies.set("token", token, tokenCookieSettings);
 
         return { success: true };
     },
