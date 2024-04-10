@@ -1,6 +1,8 @@
 import type { Actions, PageServerLoad } from "./$types";
 import type { Error } from "./error";
 import { fail, redirect } from "@sveltejs/kit";
+import bcrypt from "bcrypt";
+import sql from "$lib/server/db";
 
 export const load: PageServerLoad = ({ locals: { user } }) => {
     if (user) redirect(303, "/");
@@ -16,14 +18,22 @@ export const actions: Actions = {
 
         const sfail = (status: number, error: Error) => fail(status, { email, error });
 
+        // validate form
         if (!email) return sfail(400, "email_missing");
         if (typeof email !== "string") return sfail(400, "email_invalid");
 
         if (!password) return sfail(400, "password_missing");
         if (typeof password !== "string") return sfail(400, "password_invalid");
 
-        // TODO: check if email is registered and password matches
-        // return sfail(403, "unauthorized");
+        // retrieve password hash and check if user exists
+        const [{ password: passwordHash }] = await sql`
+            SELECT (password) FROM users WHERE email = ${email}
+        `;
+        if (!passwordHash) return sfail(401, "unauthorized");
+
+        // check if password matches
+        const matches = await bcrypt.compare(password, passwordHash);
+        if (!matches) return sfail(401, "unauthorized");
 
         // TODO: logging in
 
