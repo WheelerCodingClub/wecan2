@@ -84,7 +84,7 @@ This will be a website where people can post their clubs and activities on, and 
   - [ ] functionality
   - [ ] authentication
 - [ ] backend
-  - [ ] email/password authentication
+  - [x] email/password authentication
   - [ ] OAuth 2.0 authentication
   - [ ] database
     - [ ] provider
@@ -92,7 +92,7 @@ This will be a website where people can post their clubs and activities on, and 
     - [x] migrations
     - we need to store:
       - user info
-        - [ ] basic account information (name, email, password)
+        - [x] basic account information (name, email, password)
         - [ ] session data
         - [ ] OAuth 2.0 data
         - as it is a club discovery site, I don't imagine there being much front-facing user information, so very little profile data. probably just names and profile pictures
