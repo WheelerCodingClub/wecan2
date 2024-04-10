@@ -1,15 +1,13 @@
 <script lang="ts">
     import type { ActionData } from "./$types";
-    import { Error } from "./error";
     import { enhance } from "$app/forms";
 
     export let form: ActionData;
-
 </script>
 
 <form method="POST" use:enhance>
     {#if form?.error}
-        <p>{error}</p>
+        <p>{form.error}</p>
     {/if}
     <label>
         Email
