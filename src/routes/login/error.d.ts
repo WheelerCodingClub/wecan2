@@ -1,6 +1,7 @@
-export type Error =
-    | "email_missing"
-    | "email_invalid"
-    | "password_missing"
-    | "password_invalid"
-    | "unauthorized";
+export enum Error {
+    email_missing = "Email address is required.",
+    email_invalid = "Invalid email address.",
+    password_missing = "Password is required",
+    password_invalid = "Invalid password.",
+    unauthorized = "Invalid credentials"
+}

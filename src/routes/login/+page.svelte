@@ -1,23 +1,15 @@
 <script lang="ts">
     import type { ActionData } from "./$types";
-    import type { Error } from "./error";
+    import { Error } from "./error";
     import { enhance } from "$app/forms";
 
     export let form: ActionData;
 
-    // TODO: better presentation of these hints (please feel free to tear this out, it sucks)
-    const errorMessages: Record<Error, string> = {
-        email_missing: "Email address is required.",
-        email_invalid: "Invalid email address.",
-        password_missing: "Password is required.",
-        password_invalid: "Invalid password.",
-        unauthorized: "Invalid credentials.",
-    };
 </script>
 
 <form method="POST" use:enhance>
     {#if form?.error}
-        <p>{errorMessages[form.error]}</p>
+        <p>{error}</p>
     {/if}
     <label>
         Email

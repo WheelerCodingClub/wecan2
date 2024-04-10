@@ -1,5 +1,5 @@
 import type { Actions, PageServerLoad } from "./$types";
-import type { Error } from "./error";
+import { Error } from "./error";
 import { fail, redirect } from "@sveltejs/kit";
 import bcrypt from "bcrypt";
 import sql from "$lib/server/db";
@@ -16,24 +16,24 @@ export const actions: Actions = {
         const email = data.get("email");
         const password = data.get("password");
 
-        const sfail = (status: number, error: Error) => fail(status, { email, error });
+        const sfail = (status: number, error: Enumerator)=> fail(status, { email, error });
 
         // validate form
-        if (!email) return sfail(400, "email_missing");
-        if (typeof email !== "string") return sfail(400, "email_invalid");
+        if (!email) return sfail(400, Error.email_missing);
+        if (typeof email !== "string") return sfail(400, Error.email_invalid);
 
-        if (!password) return sfail(400, "password_missing");
-        if (typeof password !== "string") return sfail(400, "password_invalid");
+        if (!password) return sfail(400, Error.password_missing);
+        if (typeof password !== "string") return sfail(400, Error.password_invalid);
 
         // retrieve password hash and check if user exists
         const [{ password: passwordHash }] = await sql`
             SELECT (password) FROM users WHERE email = ${email}
         `;
-        if (!passwordHash) return sfail(401, "unauthorized");
+        if (!passwordHash) return sfail(401, Error.unauthorized);
 
         // check if password matches
         const matches = await bcrypt.compare(password, passwordHash);
-        if (!matches) return sfail(401, "unauthorized");
+        if (!matches) return sfail(401, Error.unauthorized);
 
         // TODO: logging in
 
