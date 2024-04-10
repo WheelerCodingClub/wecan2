@@ -16,7 +16,7 @@ export const actions: Actions = {
         const email = data.get("email");
         const password = data.get("password");
 
-        const sfail = (status: number, error: Enumerator)=> fail(status, { email, error });
+        const sfail = (status: number, error: Error)=> fail(status, { email, error });
 
         // validate form
         if (!email) return sfail(400, Error.email_missing);
