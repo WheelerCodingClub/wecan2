@@ -27,7 +27,7 @@ export const actions: Actions = {
         if (name.length > 64) return sfail(400, Error.name_long); // TODO: determine suitable max length
 
         if (!email) return sfail(400, Error.email_missing);
-        if (typeof email !== Error.email_invalid) return sfail(400, "email_invalid"); // TODO: check if email is valid
+        if (typeof email !== "string") return sfail(400, Error.email_invalid); // TODO: check if email is valid
         if (email.length > 254) return sfail(400, Error.email_long);
 
         if (!password) return sfail(400, Error.password_missing);

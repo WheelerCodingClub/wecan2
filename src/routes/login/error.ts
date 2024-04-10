@@ -3,5 +3,5 @@ export enum Error {
     email_invalid = "Invalid email address.",
     password_missing = "Password is required",
     password_invalid = "Invalid password.",
-    unauthorized = "Invalid credentials"
+    unauthorized = "Invalid credentials.",
 }
