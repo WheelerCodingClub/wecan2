@@ -1,6 +1,7 @@
 import type { Actions, PageServerLoad } from "./$types";
-import { Error } from "./error";
 import { fail, redirect } from "@sveltejs/kit";
+import { signToken, tokenCookieSettings } from "$lib/server/auth";
+import { Error } from "./error";
 import bcrypt from "bcrypt";
 import sql from "$lib/server/db";
 
@@ -10,7 +11,7 @@ export const load: PageServerLoad = ({ locals: { user } }) => {
 };
 
 export const actions: Actions = {
-    default: async ({ request }) => {
+    default: async ({ cookies, request }) => {
         const data = await request.formData();
 
         const email = data.get("email");
@@ -25,17 +26,19 @@ export const actions: Actions = {
         if (!password) return sfail(400, Error.password_missing);
         if (typeof password !== "string") return sfail(400, Error.password_invalid);
 
-        // retrieve password hash and check if user exists
-        const [{ password: passwordHash }] = await sql`
-            SELECT (password) FROM users WHERE email = ${email}
+        // retrieve information and check if user exists
+        const [{ id: userId, password: passwordHash }] = await sql`
+            SELECT id, password FROM users WHERE email = ${email}
         `;
         if (!passwordHash) return sfail(401, Error.unauthorized);
 
         // check if password matches
         const matches = await bcrypt.compare(password, passwordHash);
         if (!matches) return sfail(401, Error.unauthorized);
-
-        // TODO: logging in
+    
+        // generate token and log the user in
+        const token = signToken(userId);
+        cookies.set("token", token, tokenCookieSettings);
 
         return { success: true };
     },

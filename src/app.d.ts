@@ -8,7 +8,9 @@ declare global {
 		// interface Platform {}
 
 		interface Locals {
-			user: null;
+			user?: {
+				id: number;
+			};
 		}
 	}
 }
