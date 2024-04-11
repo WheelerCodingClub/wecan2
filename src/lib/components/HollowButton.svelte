@@ -10,5 +10,7 @@
         padding: 5px;
         text-align: center;
         border-radius: 5px;
+        color: black;
+        text-decoration: none;
     }
 </style>
