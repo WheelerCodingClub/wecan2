@@ -10,5 +10,6 @@
         text-align: center;
         border-radius: 5px;
         color: white;
+        text-decoration: none;
     }
 </style>
