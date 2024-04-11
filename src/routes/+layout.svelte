@@ -16,15 +16,16 @@
             <!--Can't we just put contact in about?-->
         </ul>
         <ul class="links-right">
-            <li><a href="/#">Join a Club</a></li>
             <!-- Since this is really just a wheeler thing,
             I don't think we need a register school option.
             If we need to we'll add it back later.-->
             {#if data.user}
                 <li><a href="/logout">Log Out</a></li>
+                <li><a href="/#">Join a Club</a></li>
             {:else}
-                <li><HollowButton href="/#">Log In</HollowButton></li>
-                <li><SolidButton href="/#">Register</SolidButton></li>
+                <li><a href="/register">Join a Club</a></li>
+                <li><HollowButton href="/login">Log In</HollowButton></li>
+                <li><SolidButton href="/register">Register</SolidButton></li>
             {/if}
         </ul>
     </div>
