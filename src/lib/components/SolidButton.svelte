@@ -11,5 +11,6 @@
         border-radius: 5px;
         color: white;
         text-decoration: none;
+        font-weight: bold;
     }
 </style>
