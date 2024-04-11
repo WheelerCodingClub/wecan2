@@ -23,7 +23,7 @@
             {#if data.user}
                 <li><a href="/logout">Log Out</a></li>
             {:else}
-                <li><HollowButton href="/#">Log In</HollowButton>></li>
+                <li><HollowButton href="/#">Log In</HollowButton></li>
                 <li><SolidButton href="/#">Register</SolidButton></li>
             {/if}
         </ul>
