@@ -1,6 +1,6 @@
 {
     "name": "WECAN 2",
-  
+    "image": "mcr.microsoft.com/devcontainers/javascript-node",
     "features": {
         "ghcr.io/itsmechlark/features/postgresql:1": {}
     },
