@@ -1,5 +1,7 @@
 <script lang="ts">
     import type { LayoutData } from "./$types";
+    import SolidButton from "$lib/components/SolidButton.svelte"
+    import HollowButton from "$lib/components/HollowButton.svelte";
 
     export let data: LayoutData;
 </script>
@@ -21,8 +23,8 @@
             {#if data.user}
                 <li><a href="/logout">Log Out</a></li>
             {:else}
-                <li><a href="/login" class="unfilled_button">Log In</a></li>
-                <li><a href="/register" class="filled_button">Register</a></li>
+                <li><HollowButton href="/#">Log In</HollowButton>></li>
+                <li><SolidButton href="/#">Register</SolidButton></li>
             {/if}
         </ul>
     </div>
@@ -76,23 +78,6 @@
         flex-direction: row;
         flex-wrap: nowrap;
         list-style: none;
-    }
-    
-    .filled_button {
-        display: block;
-        background: #4E9CAF;
-        padding: 8px;
-        text-align: center;
-        border-radius: 5px;
-        color: white;
-    }
-    .unfilled_button {
-        display: block;
-        border: 3px solid #4E9CAF;
-        width: 60px;
-        padding: 5px;
-        text-align: center;
-        border-radius: 5px;
     }
 
     li {
