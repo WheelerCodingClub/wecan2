@@ -55,7 +55,7 @@ The repository has a development container configured for GitHub Codespaces. It 
 
 Some configuration notes:
 
-- In `.env`, PGDATABASE`, `PGUSERNAME`, and `PGPASSWORD` should all be `postgres`.
+- In `.env`, `PGDATABASE`, `PGUSERNAME`, and `PGPASSWORD` should all be `postgres`.
 - In `svelte.config.js`, `config.kit.csrf` may need to be `false` in order to be able to submit POST requests such as registration.
 
 ## Building
