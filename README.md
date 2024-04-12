@@ -53,10 +53,10 @@ npm run dev -- --open
 
 The repository has a development container configured for GitHub Codespaces. It includes a PostgreSQL server as well as several useful extensions.
 
-Some configuration notes:
+Some notes:
 
-- In `.env`, `PGDATABASE`, `PGUSERNAME`, and `PGPASSWORD` should all be `postgres`.
-- In `svelte.config.js`, `config.kit.csrf` may need to be `false` in order to be able to submit POST requests such as registration.
+- All of the Postgres environment variables are configured by the container and do not need to be provided in `.env`.
+- SvelteKit's CSRF protection is disabled when the site is built in Codespaces.
 
 ## Building
 

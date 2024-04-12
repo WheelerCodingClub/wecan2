@@ -12,6 +12,12 @@
         4173, // preview server
         5432  // postgres
     ],
+
+    "remoteEnv": {
+        "PGDATABASE": "postgres",
+        "PGUSERNAME": "postgres",
+        "PGPASSWORD": "postgres"
+    },
   
     "customizations": {
         "codespaces": {
