@@ -76,7 +76,6 @@
     }
 
     li {
-        color: black;
         padding: 8px;
         text-align: center;
     }
