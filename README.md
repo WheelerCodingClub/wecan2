@@ -49,6 +49,15 @@ Alternatively, start a development server and automatically open the site in a n
 npm run dev -- --open
 ```
 
+### Codespaces
+
+The repository has a development container configured for GitHub Codespaces. It includes a PostgreSQL server as well as several useful extensions.
+
+Some configuration notes:
+
+- In `.env`, PGDATABASE`, `PGUSERNAME`, and `PGPASSWORD` should all be `postgres`.
+- In `svelte.config.js`, `config.kit.csrf` may need to be `false` in order to be able to submit POST requests such as registration.
+
 ## Building
 
 To build a production version of the site:
@@ -58,15 +67,6 @@ npm run build
 ```
 
 You can preview the production build with `npm run preview`.
-
-### Codespaces
-
-The repository has a development container configured for GitHub Codespaces. It includes a PostgreSQL server as well as several useful extensions.
-
-Some configuration notes:
-
-- In `.env`, PGDATABASE`, `PGUSERNAME`, and `PGPASSWORD` should all be `postgres`.
-- In `svelte.config.js`, `config.kit.csrf` may need to be `false` in order to be able to submit POST requests such as registration.
 
 ## Goals
 
