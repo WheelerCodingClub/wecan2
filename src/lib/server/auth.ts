@@ -20,9 +20,11 @@ export function verifyToken(token: string): { valid: true; id: number; } | { val
     }
 }
 
+// 1 week
+export const tokenCookieMaxAge = 1000 * 60 * 60 * 24 * 7;
+
 export const tokenCookieSettings = {
     httpOnly: true,
-    maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
     path: "/",
     sameSite: "lax",
     secure: import.meta.env.PROD,

@@ -25,6 +25,10 @@
         Confirm password
         <input name="confirmPassword" type="password" required />
     </label>
+    <label>
+        Remember me
+        <input name="remember" type="checkbox" />
+    </label>
     <button>Register</button>
 </form>
 {#if form?.success}

@@ -1,6 +1,6 @@
 import type { Actions, PageServerLoad } from "./$types";
 import { fail, redirect } from "@sveltejs/kit";
-import { signToken, tokenCookieSettings } from "$lib/server/auth";
+import { signToken, tokenCookieMaxAge, tokenCookieSettings } from "$lib/server/auth";
 import { Error } from "./error";
 import bcrypt from "bcrypt";
 import sql from "$lib/server/db";
@@ -18,6 +18,7 @@ export const actions: Actions = {
         const email = data.get("email");
         const password = data.get("password");
         const confirmPassword = data.get("confirmPassword");
+        const remember = data.get("remember");
 
         const sfail = (status: number, error: Error) => fail(status, { name, email, error });
 
@@ -64,7 +65,10 @@ export const actions: Actions = {
 
         // generate token and log the user in
         const token = signToken(userId);
-        cookies.set("token", token, tokenCookieSettings);
+        cookies.set("token", token, {
+            ...tokenCookieSettings,
+            ...(remember ? { maxAge: tokenCookieMaxAge } : {}),
+        });
 
         return { success: true };
     },
