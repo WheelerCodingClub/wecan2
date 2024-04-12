@@ -1,20 +1,40 @@
 {
     "name": "WECAN 2",
-    "image": "mcr.microsoft.com/devcontainers/javascript-node",
-    "features": {
-        "ghcr.io/itsmechlark/features/postgresql:1": {}
-    },
+    "dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   
     "postCreateCommand": "npm install",
-  
     "waitFor": "postCreateCommand",
+
+    "forwardPorts": [
+        5173, // development server
+        4173, // preview server
+        5432  // postgres
+    ],
   
     "customizations": {
         "codespaces": {
             "openFiles": ["README.md"]
         },
         "vscode": {
-            "extensions": ["svelte.svelte-vscode"]
+            "extensions": [
+                "mtxr.sqltools",
+                "mtxr.sqltools-driver-pg",
+                "svelte.svelte-vscode"
+            ],
+            "settings": {
+                "sqltools.connections": [{
+                    "name": "Container database",
+                    "driver": "PostgreSQL",
+                    "previewLimit": 50,
+                    "server": "localhost",
+                    "port": 5432,
+                    "database": "postgres",
+                    "username": "postgres",
+                    "password": "postgres"
+                }]
+            }
         }
     }
 }
