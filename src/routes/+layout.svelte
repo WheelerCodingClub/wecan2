@@ -18,8 +18,8 @@
                 <li><a href="/#">Join a Club</a></li>
             {:else}
                 <li><a href="/register">Join a Club</a></li>
-                <li><HollowButton href="/login">Log In</HollowButton></li>
-                <li><SolidButton href="/register">Register</SolidButton></li>
+                <li class="buttonList"><HollowButton href="/login">Log In</HollowButton></li>
+                <li class="buttonList"><SolidButton href="/register">Register</SolidButton></li>
             {/if}
         </ul>
     </div>
@@ -36,18 +36,13 @@
     }
 
     nav {
-        padding: .5rem 1rem;
-        display: flex;
-        align-items: center;
-        flex-wrap: nowrap;
-        flex-direction: row;
+        padding: 1%;
         box-shadow: 1px 1px 5px rgb(148,157,166);
         border-radius: 10px;
     }
 
     .container {
         width: 100%;
-        max-width: 1140px;
         margin: 0 auto;
         display: flex;
         flex-direction: row;
@@ -75,8 +70,8 @@
         list-style: none;
     }
 
-    li {
-        padding: 8px;
+    li:not(.buttonList), li:not(.title) {
+        margin: auto 8px;
         text-align: center;
     }
 
@@ -84,5 +79,9 @@
         text-decoration: none;
         color: black;
         font-weight: bold;
+    }
+
+    * {
+        font-family: 'Varela Round', sans-serif;
     }
 </style>
