@@ -36,7 +36,9 @@
     }
 
     nav {
+        position: sticky;
         padding: 1%;
+        margin: 1% 0;
         box-shadow: 1px 1px 5px rgb(148,157,166);
         border-radius: 10px;
     }
