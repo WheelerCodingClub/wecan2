@@ -10,15 +10,9 @@
     <div class="container">
         <ul class="links-left">
             <li class="title"><a href="/">Wecan2</a></li>
-            <!--The .title right next to it has the same
-            function, so I removed it.-->
             <li><a href="/#">About</a></li>
-            <!--Can't we just put contact in about?-->
         </ul>
         <ul class="links-right">
-            <!-- Since this is really just a wheeler thing,
-            I don't think we need a register school option.
-            If we need to we'll add it back later.-->
             {#if data.user}
                 <li><a href="/logout">Log Out</a></li>
                 <li><a href="/#">Join a Club</a></li>
@@ -39,7 +33,6 @@
     nav, div, a, ul, li {
         padding: 0;
         margin: 0;
-
     }
 
     nav {
