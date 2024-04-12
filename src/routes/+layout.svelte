@@ -42,6 +42,7 @@
         flex-wrap: nowrap;
         flex-direction: row;
         box-shadow: 1px 1px 5px rgb(148,157,166);
+        border-radius: 10px;
     }
 
     .container {
@@ -75,8 +76,9 @@
     }
 
     li {
-        margin: 0 2%;
         color: black;
+        padding: 8px;
+        text-align: center;
     }
 
     li a {
