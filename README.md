@@ -21,11 +21,15 @@ PGUSERNAME=user
 PGPASSWORD=password
 ```
 
+If you are using Codespaces, `PGDATABASE`, `PGUSERNAME`, and `PGPASSWORD` will all be `postgres`.
+
 To migrate the database:
 
 ```bash
 npm run migrate up
 ```
+
+This must be done when the database is first created and after any new migration is added.
 
 For more information about how to use the migration tool, [ley](https://github.com/lukeed/ley):
 
