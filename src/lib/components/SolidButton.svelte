@@ -14,6 +14,7 @@
         background: var(--button-background, #4E9CAF);
         width: var(--button-width, 60px);
         padding: 8px;
+        margin: var(--button-margin, 0px);
         text-align: center;
         border-radius: 5px;
         color: var(--button-color, white);
