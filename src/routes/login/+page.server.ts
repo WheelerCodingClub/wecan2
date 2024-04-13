@@ -1,7 +1,7 @@
 import type { Actions, PageServerLoad } from "./$types";
 import { fail, redirect } from "@sveltejs/kit";
 import { signToken, tokenCookieMaxAge, tokenCookieSettings } from "$lib/server/auth";
-import { Error } from "./error";
+import { Error } from "$lib/types/error";
 import bcrypt from "bcrypt";
 import sql from "$lib/server/db";
 
