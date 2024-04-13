@@ -20,5 +20,6 @@
         color: var(--button-color, white);
         text-decoration: none;
         font-weight: bold;
+        cursor: pointer;
     }
 </style>
