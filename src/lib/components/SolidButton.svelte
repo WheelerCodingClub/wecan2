@@ -1,9 +1,15 @@
 <script lang="ts">
-    export let href: string = "/#";
+    export let href: string = "";
 </script>
-<a {href}><slot>button</slot></a>
+
+{#if href}
+    <a {href}><slot>button</slot></a>
+{:else}
+    <button on:click><slot>button</slot></button>
+{/if}
+
 <style>
-    a {
+    a, button {
         display: block;
         background: #4E9CAF;
         padding: 8px;
