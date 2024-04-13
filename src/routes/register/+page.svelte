@@ -2,10 +2,13 @@
     import type { ActionData } from "./$types";
     import { enhance } from "$app/forms";
 
+    import SolidButton from '$lib/components/SolidButton.svelte'
+
     export let form: ActionData;
 </script>
 
 <form method="POST" use:enhance>
+    <h2>Sign In</h2>
     {#if form?.error}
         <p>{form.error}</p>
     {/if}
@@ -26,11 +29,40 @@
         <input name="confirmPassword" type="password" required placeholder="Confirm Password"/>
     </label>
     <label>
-        Remember me
         <input name="remember" type="checkbox" />
+        Remember Me
     </label>
-    <button>Register</button>
+    <SolidButton --button-width="100%">Submit</SolidButton>
 </form>
 {#if form?.success}
     <p>Registered successfully.</p>
 {/if}
+
+<style>
+    form {
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px rgb(148,157,166);
+        padding: 1%;
+        margin: auto;
+        width: 30%;
+    }
+
+    form h2 {
+        text-align: center;
+        margin-top: 0;
+    }
+
+    input[type=text],
+    input[type=email],
+    input[type=password]
+    {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+</style>
