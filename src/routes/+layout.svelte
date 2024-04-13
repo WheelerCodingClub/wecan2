@@ -13,7 +13,7 @@
             <li><a href="/#">About</a></li>
         </ul>
         <ul class="links-right">
-            {#if data.user}
+            {#if data.loggedIn}
                 <li><a href="/logout">Log Out</a></li>
                 <li><a href="/#">Join a Club</a></li>
             {:else}
