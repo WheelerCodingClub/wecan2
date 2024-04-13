@@ -12,7 +12,7 @@
     a, button {
         display: block;
         background: var(--button-background, #4E9CAF);
-        width: var(--button-width, 60px);
+        width: var(--button-width, fit-content);
         padding: 8px;
         margin: var(--button-margin, 0px);
         text-align: center;

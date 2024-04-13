@@ -14,7 +14,7 @@
         border-width: 3px;
         border-style: solid;
         border-color: var(--button-border-color, #4E9CAF);
-        width: var(--button-width, 60px);
+        width: var(--button-width, fit-content);
         padding: 5px;
         margin: var(--button-margin, 0px);
         text-align: center;
