@@ -18,8 +18,8 @@
                 <li><a href="/logout">Log Out</a></li>
             {:else}
                 <li><a href="/register">Join a Club</a></li>
-                <li class="buttonList"><HollowButton href="/login">Log In</HollowButton></li>
-                <li class="buttonList"><SolidButton href="/register">Register</SolidButton></li>
+                <li class="buttonList"><HollowButton href="/login" --button-width="fit-content">Log In</HollowButton></li>
+                <li class="buttonList"><SolidButton href="/register" --button-width="fit-content">Register</SolidButton></li>
             {/if}
         </ul>
     </div>
