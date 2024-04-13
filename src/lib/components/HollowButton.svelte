@@ -22,5 +22,6 @@
         color: var(--button-color, black);
         text-decoration: none;
         font-weight: bold;
+        cusor: pointer;
     }
 </style>
