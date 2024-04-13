@@ -2,7 +2,7 @@
     import type { ActionData } from "./$types";
     import { enhance } from "$app/forms";
 
-    import SolidButton from '$lib/components/SolidButton.svelte'
+    import SolidButton from '$lib/components/SolidButton.svelte';
 
     export let form: ActionData;
 </script>
