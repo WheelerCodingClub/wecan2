@@ -11,19 +11,19 @@
     {/if}
     <label>
         Name
-        <input name="name" type="text" required value={form?.name ?? ""} />
+        <input name="name" type="text" required value={form?.name ?? ""} placeholder="Name"/>
     </label>
     <label>
         Email
-        <input name="email" type="email" required value={form?.email ?? ""} />
+        <input name="email" type="email" required value={form?.email ?? ""} placeholder="Name"/>
     </label>
     <label>
         Password
-        <input name="password" type="password" required />
+        <input name="password" type="password" required placeholder="Password"/>
     </label>
     <label>
         Confirm password
-        <input name="confirmPassword" type="password" required />
+        <input name="confirmPassword" type="password" required placeholder="Confirm Password"/>
     </label>
     <label>
         Remember me

@@ -11,11 +11,11 @@
     {/if}
     <label>
         Email
-        <input name="email" type="email" required value={form?.email ?? ""} />
+        <input name="email" type="email" required value={form?.email ?? ""} placeholder="Email Address"/>
     </label>
     <label>
         Password
-        <input name="password" type="password" required />
+        <input name="password" type="password" required placeholder="Password"/>
     </label>
     <label>
         Remember me
