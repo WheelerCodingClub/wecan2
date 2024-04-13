@@ -5,6 +5,8 @@
     import SolidButton from "$lib/components/SolidButton.svelte";
 
     export let form: ActionData;
+
+    let checked: boolean;
 </script>
 
 <form method="POST" use:enhance>
@@ -18,10 +20,14 @@
     </label>
     <label>
         Password
-        <input name="password" type="password" required placeholder="Password"/>
+        <input name="password" type={checked?"text":"password"} required placeholder="Password" id="Password"/>
     </label>
     <label>
-        <input name="remember" type="checkbox" />
+        <input name="showPass" type="checkbox" bind:checked/>
+        Show Password
+    </label>
+    <label>
+        <input name="remember" type="checkbox"/>
         Remember Me
     </label>
     <SolidButton --button-width="100%" --button-margin="10px 0px 0px 0px">Log In</SolidButton>
@@ -45,7 +51,8 @@
     }
 
     input[type=email],
-    input[type=password]
+    input[type=password],
+    input[type=text]
     {
         width: 100%;
         padding: 12px 20px;
