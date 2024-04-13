@@ -23,7 +23,7 @@
         <input name="password" type={checked?"text":"password"} required placeholder="Password" id="Password"/>
     </label>
     <label>
-        <input name="showPass" type="checkbox" bind:checked/>
+        <input name="showPassword" type="checkbox" bind:checked/>
         Show Password
     </label>
     <label>
