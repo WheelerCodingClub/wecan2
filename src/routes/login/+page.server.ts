@@ -16,7 +16,7 @@ export const actions: Actions = {
 
         const email = data.get("email");
         const password = data.get("password");
-        const remember = data.get("rememeber");
+        const remember = data.get("remember");
 
         const sfail = (status: number, error: Error)=> fail(status, { email, error });
 
