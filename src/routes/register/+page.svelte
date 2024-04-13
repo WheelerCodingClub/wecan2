@@ -32,7 +32,7 @@
         <input name="remember" type="checkbox" />
         Remember Me
     </label>
-    <SolidButton --button-width="100%">Submit</SolidButton>
+    <SolidButton --button-width="100%" --button-margin="10px 0px 0px 0px">Submit</SolidButton>
 </form>
 {#if form?.success}
     <p>Registered successfully.</p>
