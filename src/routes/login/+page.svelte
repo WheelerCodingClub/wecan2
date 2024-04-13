@@ -6,7 +6,7 @@
 
     export let form: ActionData;
 
-    let checked: boolean;
+    let showPassword: boolean;
 </script>
 
 <form method="POST" use:enhance>
@@ -16,14 +16,14 @@
     {/if}
     <label>
         Email
-        <input name="email" type="email" required value={form?.email ?? ""} placeholder="Email Address"/>
+        <input name="email" type="email" value={form?.email ?? ""} required placeholder="Email Address"/>
     </label>
     <label>
         Password
-        <input name="password" type={checked?"text":"password"} required placeholder="Password" id="Password"/>
+        <input name="password" type={showPassword ? "text" : "password"} required placeholder="Password"/>
     </label>
     <label>
-        <input name="showPassword" type="checkbox" bind:checked/>
+        <input type="checkbox" bind:checked={showPassword}/>
         Show Password
     </label>
     <label>
