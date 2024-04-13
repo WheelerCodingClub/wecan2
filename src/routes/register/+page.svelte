@@ -8,7 +8,7 @@
 </script>
 
 <form method="POST" use:enhance>
-    <h2>Sign Up</h2>
+    <h2>Register</h2>
     {#if form?.error}
         <p>{form.error}</p>
     {/if}
