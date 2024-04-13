@@ -5,6 +5,8 @@
     import SolidButton from '$lib/components/SolidButton.svelte';
 
     export let form: ActionData;
+
+    let checked: boolean;
 </script>
 
 <form method="POST" use:enhance>
@@ -22,11 +24,15 @@
     </label>
     <label>
         Password
-        <input name="password" type="password" required placeholder="Password"/>
+        <input name="password" type={checked?"text":"password"} required placeholder="Password"/>
     </label>
     <label>
         Confirm password
-        <input name="confirmPassword" type="password" required placeholder="Confirm Password"/>
+        <input name="confirmPassword" type={checked?"text":"password"} required placeholder="Confirm Password"/>
+    </label>
+    <label>
+        <input name="showPass" type="checkbox" bind:checked/>
+        Show Password
     </label>
     <label>
         <input name="remember" type="checkbox" />
