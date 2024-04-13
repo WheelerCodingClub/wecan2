@@ -11,12 +11,14 @@
 <style>
     a, button {
         display: block;
-        border: 3px solid #4E9CAF;
-        width: 60px;
+        border-width: 3px;
+        border-style: solid;
+        border-color: var(--button-border-color, #4E9CAF);
+        width: var(--button-width, 60px);
         padding: 5px;
         text-align: center;
         border-radius: 5px;
-        color: black;
+        color: var(--button-color, black);
         text-decoration: none;
         font-weight: bold;
     }
