@@ -13,7 +13,7 @@
         display: block;
         background: var(--button-background, #4E9CAF);
         width: var(--button-width, fit-content);
-        padding: 8px;
+        padding: 10px;
         margin: var(--button-margin, 0px);
         text-align: center;
         border-radius: 5px;
@@ -21,5 +21,6 @@
         text-decoration: none;
         font-weight: bold;
         cursor: pointer;
+        border: none;
     }
 </style>
