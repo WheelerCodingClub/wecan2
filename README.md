@@ -108,9 +108,9 @@ This will be a website where people can post their clubs and activities on, and 
         - [ ] OAuth 2.0 data
         - as it is a club discovery site, I don't imagine there being much front-facing user information, so very little profile data. probably just names and profile pictures
       - club info
-        - [ ] name/description
+        - [x] name/description
         - [ ] tags/keywords/categories for search
-        - [ ] visibility: hidden from search (unlisted) / hidden from view (private)
+        - [x] visibility: hidden from search (unlisted) / hidden from view (private)
         - [ ] logo image
         - [ ] banner image
         - ...and more? contacts, meeting times and locations, people involved (leadership/sponsor?), etc.
