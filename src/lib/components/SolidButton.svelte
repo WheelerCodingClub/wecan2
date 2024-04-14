@@ -5,7 +5,7 @@
 {#if href}
     <a {href}><slot>button</slot></a>
 {:else}
-    <button on:click><slot>button</slot></button>
+    <button on:click on:focus on:mouseover on:blur on:mouseout><slot>button</slot></button>
 {/if}
 
 <style>
