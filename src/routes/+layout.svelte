@@ -14,8 +14,8 @@
         </ul>
         <ul class="links-right">
             {#if data.loggedIn}
-                <li><a href="/#">Join a Club</a></li>
-                <li><a href="/logout">Log Out</a></li>
+                <li class="buttonList"><HollowButton href="/browse">Join a Club</HollowButton></li>
+                <li class="buttonList"><SolidButton href="/logout">Log Out</SolidButton></li>
             {:else}
                 <li><a href="/register">Join a Club</a></li>
                 <li class="buttonList"><HollowButton href="/login">Log In</HollowButton></li>
