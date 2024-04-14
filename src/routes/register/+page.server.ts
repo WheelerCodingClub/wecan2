@@ -1,6 +1,10 @@
 import type { Actions, PageServerLoad } from "./$types";
 import { fail, redirect } from "@sveltejs/kit";
-import { signToken, tokenCookieMaxAge, tokenCookieSettings } from "$lib/server/auth";
+import {
+    signToken,
+    tokenCookieMaxAge,
+    tokenCookieSettings,
+} from "$lib/server/auth";
 import { Error } from "$lib/types/error";
 import bcrypt from "bcrypt";
 import sql from "$lib/server/db";
@@ -42,14 +46,14 @@ export const actions: Actions = {
         if (password !== confirmPassword) return sfail(400, Error.password_confirm);
 
         // check if email is already registered
-        const [{ exists }] = await sql`
+        const [{ exists }]: [{ exists: boolean }] = await sql`
             SELECT EXISTS (SELECT 1 FROM users WHERE email = ${email})
         `;
         if (exists) return sfail(400, Error.email_taken);
 
         // register user
         const passwordHash = await bcrypt.hash(password, 12);
-        const [{ id: userId }] = await sql`
+        const [{ id: userId }]: [{ id: number }] = await sql`
             INSERT INTO users (
                 name,
                 email,

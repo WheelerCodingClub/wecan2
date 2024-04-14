@@ -13,7 +13,7 @@ export const handle: Handle = async ({ event, resolve }) => {
         const result = verifyToken(token);
         if (result.valid) {
             // if the user exists...
-            const [{ exists }] = await sql`
+            const [{ exists }]: [{ exists: boolean }] = await sql`
                 SELECT EXISTS (SELECT 1 FROM users WHERE id = ${result.id})
             `;
             if (exists) {

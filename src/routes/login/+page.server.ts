@@ -1,6 +1,10 @@
 import type { Actions, PageServerLoad } from "./$types";
 import { fail, redirect } from "@sveltejs/kit";
-import { signToken, tokenCookieMaxAge, tokenCookieSettings } from "$lib/server/auth";
+import {
+    signToken,
+    tokenCookieMaxAge,
+    tokenCookieSettings,
+} from "$lib/server/auth";
 import { Error } from "$lib/types/error";
 import bcrypt from "bcrypt";
 import sql from "$lib/server/db";
@@ -28,17 +32,22 @@ export const actions: Actions = {
         if (typeof password !== "string") return sfail(400, Error.password_invalid);
 
         // retrieve information and check if user exists
-        const [{ id: userId, password: passwordHash }] = await sql`
+        const [user]: [
+            {
+                id: number;
+                password: string;
+            }?,
+        ] = await sql`
             SELECT id, password FROM users WHERE email = ${email}
         `;
-        if (!passwordHash) return sfail(401, Error.unauthorized);
+        if (!user) return sfail(401, Error.unauthorized);
 
         // check if password matches
-        const matches = await bcrypt.compare(password, passwordHash);
+        const matches = await bcrypt.compare(password, user.password);
         if (!matches) return sfail(401, Error.unauthorized);
-    
+
         // generate token and log the user in
-        const token = signToken(userId);
+        const token = signToken(user.id);
         cookies.set("token", token, {
             ...tokenCookieSettings,
             ...(remember ? { maxAge: tokenCookieMaxAge } : {}),
