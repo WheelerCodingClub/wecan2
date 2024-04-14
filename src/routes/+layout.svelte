@@ -37,6 +37,8 @@
 
     nav {
         position: sticky;
+        top: 19px;
+        background-color: var(--theme-background, white);
         padding: 1%;
         margin: 1% 0;
         box-shadow: 1px 1px 5px rgb(148,157,166);
