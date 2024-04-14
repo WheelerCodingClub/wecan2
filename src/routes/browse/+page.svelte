@@ -34,7 +34,7 @@
         box-shadow: 1px 1px 5px rgb(148,157,166);
         padding: 1%;
         margin: 2% auto;
-        width: 30%;
+        width: 50%;
     }
 
     h2 {
