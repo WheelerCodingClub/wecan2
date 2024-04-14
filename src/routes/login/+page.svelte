@@ -13,7 +13,7 @@
 <form method="POST" use:enhance>
     <h2>Sign In</h2>
     {#if form?.error}
-        <p transition:fly={{y:20, duration:20}}>{form.error}</p>
+        <p id="error" transition:fly={{x:20, duration:200}}>{form.error}</p>
     {/if}
     <label>
         Email
@@ -44,6 +44,11 @@
         padding: 1%;
         margin: auto;
         width: 30%;
+    }
+    
+    #error {
+        color: red;
+        font-weight: bold;
     }
 
     form h2 {
