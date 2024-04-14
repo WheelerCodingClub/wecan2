@@ -4,6 +4,8 @@
     import HollowButton from "$lib/components/HollowButton.svelte";
 
     export let data: LayoutData;
+
+    let hovered: boolean;
 </script>
 
 <nav>
@@ -15,7 +17,24 @@
         <ul class="links-right">
             {#if data.loggedIn}
                 <li class="buttonList"><HollowButton href="/browse">Join a Club</HollowButton></li>
-                <li class="buttonList"><SolidButton href="/logout">Log Out</SolidButton></li>
+                <li class="buttonList">
+                    <SolidButton 
+                    on:mouseover={() => hovered = true}
+                    on:mouseout={() => hovered = false}>
+                    Account
+                    </SolidButton>
+                </li>
+                <!-- svelte-ignore a11y-no-static-element-interactions -->
+                <div
+                class="dropdown-options"
+                class:hovered
+                on:focus
+                on:blur
+                on:mouseover={() => hovered = true}
+                on:mouseout={() => hovered=false}>
+                    <a href="/me">Account Information</a>
+                    <a href="/logout">Logout</a>
+                </div>
             {:else}
                 <li><a href="/register">Join a Club</a></li>
                 <li class="buttonList"><HollowButton href="/login">Log In</HollowButton></li>
@@ -83,6 +102,29 @@
         text-decoration: none;
         color: black;
         font-weight: bold;
+    }
+
+    .dropdown-options {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 28px;
+        overflow: auto;
+        background-color:#fff;
+        box-shadow: 1px 1px 5px rgb(148,157,166);
+        border-radius: 10px;
+    }
+
+    .hovered {
+        display: block;
+    }
+
+    .dropdown-options a {
+        display: block;
+        color: #000000;
+        padding: 2px;
+        text-decoration: none;
+        padding:20px 40px;
     }
 
     * {
