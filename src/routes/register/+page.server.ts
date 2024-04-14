@@ -59,7 +59,7 @@ export const actions: Actions = {
                 ${name},
                 ${email},
                 ${passwordHash},
-                ${sql`now()`}
+                now()
             ) RETURNING id
         `;
 
