@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { ActionData } from "./$types";
     import { enhance } from "$app/forms";
+    import { fly } from 'svelte/transition';
 
     import SolidButton from "$lib/components/SolidButton.svelte";
 
@@ -12,7 +13,7 @@
 <form method="POST" use:enhance>
     <h2>Sign In</h2>
     {#if form?.error}
-        <p>{form.error}</p>
+        <p transition:fly={{y:20, duration:20}}>{form.error}</p>
     {/if}
     <label>
         Email
