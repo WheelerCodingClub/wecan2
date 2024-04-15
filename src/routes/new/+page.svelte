@@ -4,6 +4,8 @@
 
     import SolidButton from "$lib/components/SolidButton.svelte";
 
+    import '$lib/styles/forms.css';
+
     export let form: ActionData;
 </script>
 
@@ -22,32 +24,6 @@
 </form>
 
 <style>
-    form {
-        border-radius: 10px;
-        box-shadow: 1px 1px 5px rgb(148,157,166);
-        padding: 1%;
-        margin: auto;
-        width: 30%;
-    }
-
-    form h2 {
-        text-align: center;
-        margin-top: 0;
-    }
-
-    input[type=text],
-    textarea
-    {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        resize: none;
-    }
-
     textarea::placeholder,
     input::placeholder {
         font-family: 'Varela Round', sans-serif;

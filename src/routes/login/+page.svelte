@@ -7,6 +7,8 @@
 
     export let form: ActionData;
 
+    import '$lib/styles/forms.css';
+
     let showPassword: boolean;
 </script>
 
@@ -36,38 +38,3 @@
 {#if form?.success}
     <p>Logged in successfully.</p>
 {/if}
-
-<style>
-    form {
-        border-radius: 10px;
-        box-shadow: 1px 1px 5px rgb(148,157,166);
-        padding: 1%;
-        margin: auto;
-        width: 30%;
-    }
-    
-    #error {
-        color: red;
-        font-weight: bold;
-    }
-
-    form h2 {
-        text-align: center;
-        margin-top: 0;
-    }
-
-    input[type=email],
-    input[type=password],
-    input[type=text]
-    {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-
-</style>
-

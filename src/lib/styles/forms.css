@@ -1,0 +1,32 @@
+form {
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgb(148,157,166);
+    padding: 19px;
+    margin: auto;
+    width: 602px;
+}
+
+#error {
+    color: red;
+    font-weight: bold;
+}
+
+form h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+input[type=email],
+input[type=password],
+input[type=text],
+textarea
+{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: none;
+}
