@@ -110,7 +110,7 @@
         top: 60px;
         right: 28px;
         overflow: auto;
-        background-color:#fff;
+        background-color: var(--theme-background, white);
         box-shadow: 1px 1px 5px rgb(148,157,166);
         border-radius: 10px;
     }
