@@ -109,7 +109,6 @@
         position: absolute;
         top: 60px;
         right: 28px;
-        overflow: auto;
         background-color: var(--theme-background, white);
         box-shadow: 1px 1px 5px rgb(148,157,166);
         border-radius: 10px;
@@ -121,10 +120,10 @@
 
     .dropdown-options a {
         display: block;
-        color: #000000;
+        color: black;
         padding: 2px;
         text-decoration: none;
-        padding:20px 40px;
+        padding: 20px 40px;
     }
 
     * {
