@@ -9,8 +9,11 @@
 <nav>
     <div class="container">
         <ul class="links-left">
-            <li class="title"><a href="/">Wecan2</a></li>
-            <li><a href="/#">About</a></li>
+            {#if data.loggedIn}
+                <li class="title"><a href="/">Wecan2</a></li>
+            {:else}
+                <li class="title"><a href="/about">Wecan2</a></li>
+            {/if}
         </ul>
         <ul class="links-right">
             {#if data.loggedIn}
