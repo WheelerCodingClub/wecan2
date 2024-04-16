@@ -17,11 +17,11 @@
     {#if form?.error}
         <p id="error" transition:fly={{x:20, duration:200}}>{form.error}</p>
     {/if}
-    <label>
+    <label class="bold">
         Email
         <input name="email" type="email" value={form?.email ?? ""} required placeholder="Email Address"/>
     </label>
-    <label>
+    <label class="bold">
         Password
         <input name="password" type={showPassword ? "text" : "password"} required placeholder="Password"/>
     </label>
