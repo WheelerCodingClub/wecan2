@@ -15,7 +15,7 @@
                 <li class="title"><a href="/about">Wecan2</a></li>
             {/if}
         </ul>
-        <ul class="links-right">
+        <ul class="links-right desktop">
             {#if data.loggedIn}
                 <li class="buttonList"><HollowButton href="/browse">Join a Club</HollowButton></li>
                 <li class="buttonList">
