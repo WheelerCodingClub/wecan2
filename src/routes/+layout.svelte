@@ -41,6 +41,26 @@
 </main>
 
 <style>
+    @media only screen and (min-width: 1080px) {
+        .desktop {
+            display: block;
+        }
+        
+        .mobile {
+            display: none;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .desktop {
+            display: none;
+        }
+
+        .mobile {
+            display: none;
+        }
+    }
+
     nav, div, a, ul, li {
         padding: 0;
         margin: 0;
