@@ -23,7 +23,7 @@
     </label>
     <label class="bold">
         Email
-        <input name="email" type="email" required value={form?.email ?? ""} placeholder="Name"/>
+        <input name="email" type="email" required value={form?.email ?? ""} placeholder="Email"/>
     </label>
     <label class="bold">
         Password
