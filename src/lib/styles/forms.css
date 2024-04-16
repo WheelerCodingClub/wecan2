@@ -30,3 +30,11 @@ textarea
     box-sizing: border-box;
     resize: none;
 }
+
+label {
+    font-family: 'Varela Round', sans-serif;
+}
+
+.bold {
+    font-weight: bold;
+}

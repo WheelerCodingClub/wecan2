@@ -11,11 +11,11 @@
 
 <form method="POST" use:enhance>
     <h2>Create a New Club</h2>
-    <label>
+    <label class="bold">
         Name
         <input name="name" type="text" required value={form?.name ?? ""} placeholder="Name of Club">
     </label>
-    <label>
+    <label class="bold">
         Description
         <br>
         <textarea name="description" rows="4" cols="50" placeholder="Description of Club">{form?.description ?? ""}</textarea>
