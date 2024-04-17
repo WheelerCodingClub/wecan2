@@ -4,6 +4,7 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="/src/lib/styles/global.css"/>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
@@ -11,35 +12,3 @@
 	</body>
 </html>
 
-<style>
-	.bold {
-		font-weight: bold;
-	}
-
-	@media only screen and (min-width: 768px) {
-        .desktop {
-            display: block;
-        }
-        
-        .desktop.links-right {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            list-style: none;
-        }
-        
-        .mobile {
-            display: none;
-        }
-    }
-
-    @media only screen and (max-width: 768px) {
-        .desktop {
-            display: none;
-        }
-
-        .mobile {
-            display: none;
-        }
-    }
-</style>
