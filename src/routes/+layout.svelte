@@ -33,6 +33,15 @@
                 <li class="buttonList"><SolidButton href="/register">Register</SolidButton></li>
             {/if}
         </ul>
+        <ul class="links-right mobile">
+            {#if data.loggedIn}
+                <div>placeholder</div>
+            {:else}
+                <a>
+                    <img src="/static/hamburger.svg" alt="Hamburger icon">
+                </a>
+            {/if}
+        </ul>
     </div>
 </nav>
 
