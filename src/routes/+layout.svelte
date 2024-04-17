@@ -46,6 +46,13 @@
             display: block;
         }
         
+        .desktop.links-right {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            list-style: none;
+        }
+        
         .mobile {
             display: none;
         }
@@ -96,13 +103,6 @@
 
     .links-right {
         float: right;
-    }
-
-    ul {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        list-style: none;
     }
 
     li:not(.buttonList), li:not(.title) {
