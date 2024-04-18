@@ -4,8 +4,6 @@
     import SolidButton from "$lib/components/SolidButton.svelte";
     import HollowButton from "$lib/components/HollowButton.svelte";
 
-    import hamburger from "$lib/images/hamburger.png?enhanced";
-
     export let data: LayoutData;
 </script>
 
