@@ -2,7 +2,7 @@
     font-weight: bold;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 769px) {
     .desktop {
         display: block;
     }
