@@ -1,7 +1,9 @@
 <script lang="ts">
     import type { LayoutData } from "./$types";
-    import SolidButton from "$lib/components/SolidButton.svelte"
+
+    import SolidButton from "$lib/components/SolidButton.svelte";
     import HollowButton from "$lib/components/HollowButton.svelte";
+    import Hamburger from "$lib/images/hamburger.svg";
 
     export let data: LayoutData;
 </script>
@@ -37,9 +39,7 @@
             {#if data.loggedIn}
                 <div>placeholder</div>
             {:else}
-                <a>
-                    <img src="/static/hamburger.svg" alt="Hamburger icon">
-                </a>
+                    <img src={Hamburger} alt="Hamburger icon">
             {/if}
         </ul>
     </div>
