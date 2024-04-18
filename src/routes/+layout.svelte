@@ -3,7 +3,7 @@
 
     import SolidButton from "$lib/components/SolidButton.svelte";
     import HollowButton from "$lib/components/HollowButton.svelte";
-    import Hamburger from "$lib/images/hamburger.svg";
+    import Hamburger from "$lib/images/hamburger.png";
 
     export let data: LayoutData;
 </script>
@@ -39,7 +39,7 @@
             {#if data.loggedIn}
                 <div>placeholder</div>
             {:else}
-                    <img src={Hamburger} alt="Hamburger icon">
+                    <img src={Hamburger} alt="Hamburger icon" />
             {/if}
         </ul>
     </div>
