@@ -1,13 +1,21 @@
 <script lang="ts">
     import type { LayoutData } from "./$types";
+    import { browser } from '$app/environment';
 
     import SolidButton from "$lib/components/SolidButton.svelte";
     import HollowButton from "$lib/components/HollowButton.svelte";
 
+    import hamburgerIcon from "$lib/images/hamburger.svg";
+
+    let mobileDropdown: boolean = false;
+    let dropdownHeight: number = 0;
+
+    $: height = mobileDropdown ? "100%" : "fit-content";
+
     export let data: LayoutData;
 </script>
 
-<nav>
+<nav style:height>
     <div class="container">
         <ul class="links-left">
             {#if data.loggedIn}
@@ -34,10 +42,26 @@
                 <li class="buttonList"><SolidButton href="/register">Register</SolidButton></li>
             {/if}
         </ul>
-        <ul class="links-right mobile">
-                <svg height="32px" id="Layer_1" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/></svg>
-        </ul>
+        <div class="mobile links-right">
+            <HollowButton on:click={() => mobileDropdown = !mobileDropdown}>
+                <img src={hamburgerIcon} alt="hamburger icon">
+                <!--source: https://www.iconfinder.com/icons/134216/menu_lines_hamburger_icon-->
+            </HollowButton>
+        </div>
     </div>
+    {#if mobileDropdown}
+    <ul class="mobile">
+        {#if data.loggedIn}
+            <li><a href="/browse">Join a Club</a></li>
+            <li><a href="/me">Account Information</a></li>
+            <li><a href="/logout">Logout</a></li>
+        {:else}
+            <li><a href="/register">Join a Club</a></li>
+            <li><a href="/login">Log In</a></li>
+            <li><a href="/register">Register</a></li>
+        {/if}
+    </ul>
+    {/if}
 </nav>
 
 <main>
@@ -46,33 +70,39 @@
 
 <style>
 
+
     nav, div, a, ul, li {
         padding: 0;
         margin: 0;
     }
 
     nav {
+        top: 0px;
         position: sticky;
-        top: 19px;
-        background-color: var(--theme-background, white);
-        padding: 19px;
-        margin: 19px 0;
-        box-shadow: 1px 1px 5px rgb(148,157,166);
-        border-radius: 10px;
     }
 
     .container {
-        width: 100%;
-        margin: 0 auto;
+        width: 97%;
+        height: 98%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        background-color: var(--theme-background, white);
+        padding: 1%;
+        margin: 1% auto;
+        box-shadow: 1px 1px 5px rgb(148,157,166);
+        border-radius: 10px;
+
     }
 
     .title {
         font-size: 30px;
         display: inline;
-        margin: 0 2%;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
     }
 
     .links-left {
