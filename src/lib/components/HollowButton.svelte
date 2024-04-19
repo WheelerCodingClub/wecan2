@@ -1,11 +1,24 @@
 <script lang="ts">
-    export let href: string = "/#";
+    export let href: string = "";
+    export let Class: string = "";
 </script>
 
 {#if href}
-    <a {href}><slot>button</slot></a>
+    <a
+    {href}
+    class={Class}>
+        <slot>button</slot>
+    </a>
 {:else}
-    <button on:click on:focus on:mouseover on:blur on:mouseout><slot>button</slot></button>
+    <button
+    on:click
+    on:focus
+    on:mouseover
+    on:blur
+    on:mouseout
+    class={Class}>
+        <slot>button</slot>
+    </button>
 {/if}
 
 <style>
