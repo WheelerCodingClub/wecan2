@@ -78,7 +78,10 @@
 
     nav {
         top: 0px;
+        padding-top: 19px;
+        padding-bottom: 19px;
         position: sticky;
+        backdrop-filter: blur(4px);
     }
 
     .container {
@@ -92,7 +95,6 @@
         margin: 1% auto;
         box-shadow: 1px 1px 5px rgb(148,157,166);
         border-radius: 10px;
-
     }
 
     .title {
