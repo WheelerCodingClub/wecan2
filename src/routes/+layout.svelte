@@ -15,7 +15,7 @@
     export let data: LayoutData;
 </script>
 
-<nav style:height>
+<nav>
     <div class="container">
         <ul class="links-left">
             {#if data.loggedIn}
@@ -48,20 +48,20 @@
                 <!--source: https://www.iconfinder.com/icons/134216/menu_lines_hamburger_icon-->
             </HollowButton>
         </div>
-    </div>
-    {#if mobileDropdown}
-    <ul class="mobile">
-        {#if data.loggedIn}
-            <li><a href="/browse">Join a Club</a></li>
-            <li><a href="/me">Account Information</a></li>
-            <li><a href="/logout">Logout</a></li>
-        {:else}
-            <li><a href="/register">Join a Club</a></li>
-            <li><a href="/login">Log In</a></li>
-            <li><a href="/register">Register</a></li>
+        {#if mobileDropdown}
+        <ul class="mobile dropdown">
+            {#if data.loggedIn}
+                <li><a href="/browse">Join a Club</a></li>
+                <li><a href="/me">Account Information</a></li>
+                <li><a href="/logout">Logout</a></li>
+            {:else}
+                <li><a href="/register">Join a Club</a></li>
+                <li><a href="/login">Log In</a></li>
+                <li><a href="/register">Register</a></li>
+            {/if}
+        </ul>
         {/if}
-    </ul>
-    {/if}
+    </div>
 </nav>
 
 <main>
@@ -69,32 +69,54 @@
 </main>
 
 <style>
-
-
     nav, div, a, ul, li {
         padding: 0;
         margin: 0;
     }
 
+    @media only screen and (min-width: 769px) {
+        nav {
+            top: 0px;
+            padding-top: 1%;
+            padding-bottom: 1%;
+            position: absolute;
+            width: 100%;
+        }
+        .container {
+            border-radius: 10px;
+            padding: 1%;
+            margin: 1% auto;
+            width: 96%;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        nav {
+            top: 0px;
+            left: 0px;
+            padding: none;
+            margin: none;
+            width: 100%;
+        }
+
+        nav .container {
+            border-radius: 0 0 10px 10px;
+            padding: 1%;
+            margin: none;
+            border-top: none;
+        }
+    }
+
     nav {
-        top: 0px;
-        padding-top: 19px;
-        padding-bottom: 19px;
-        position: sticky;
-        backdrop-filter: blur(4px);
+        position: fixed;
     }
 
     .container {
-        width: 97%;
-        height: 98%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         background-color: var(--theme-background, white);
-        padding: 1%;
-        margin: 1% auto;
         box-shadow: 1px 1px 5px rgb(148,157,166);
-        border-radius: 10px;
     }
 
     .title {
@@ -146,6 +168,10 @@
 
     .dropdown:hover .dropdown-content {
         display: block;
+    }
+
+    .mobile .dropdown {
+        clear: both;
     }
 
     * {
