@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { LayoutData } from "./$types";
-    import { browser } from '$app/environment';
+    import { fly, blur } from 'svelte/transition';
 
     import SolidButton from "$lib/components/SolidButton.svelte";
     import HollowButton from "$lib/components/HollowButton.svelte";
@@ -8,9 +8,6 @@
     import hamburgerIcon from "$lib/images/hamburger.svg";
 
     let mobileDropdown: boolean = false;
-    let dropdownHeight: number = 0;
-
-    $: height = mobileDropdown ? "100%" : "fit-content";
 
     export let data: LayoutData;
 </script>
@@ -48,8 +45,27 @@
                 <!--source: https://www.iconfinder.com/icons/134216/menu_lines_hamburger_icon-->
             </HollowButton>
         </div>
-        {#if mobileDropdown}
-        <ul class="mobile dropdown">
+    </div>
+</nav>
+{#if mobileDropdown}
+<div transition:blur={{amount: 4}}
+class="backdropcontainer">
+    <div transition:fly={{ duration: 300, y: -500, opacity: 0.5 }}
+    class="mobiledropdown">
+        <ul class="links-left">
+            {#if data.loggedIn}
+                <li class="title"><a href="/">Wecan2</a></li>
+            {:else}
+                <li class="title"><a href="/about">Wecan2</a></li>
+            {/if}
+        </ul>
+        <div class="links-right">
+            <HollowButton on:click={() => mobileDropdown = !mobileDropdown}>
+                <img src={hamburgerIcon} alt="hamburger icon">
+                <!--source: https://www.iconfinder.com/icons/134216/menu_lines_hamburger_icon-->
+            </HollowButton>
+        </div>
+        <ul class="links-middle">
             {#if data.loggedIn}
                 <li><a href="/browse">Join a Club</a></li>
                 <li><a href="/me">Account Information</a></li>
@@ -60,9 +76,9 @@
                 <li><a href="/register">Register</a></li>
             {/if}
         </ul>
-        {/if}
     </div>
-</nav>
+</div>
+{/if}
 
 <main>
     <slot />
@@ -74,19 +90,27 @@
         margin: 0;
     }
 
+    main {
+        padding-top: 7%;
+    }
+
     @media only screen and (min-width: 769px) {
         nav {
             top: 0px;
             padding-top: 1%;
             padding-bottom: 1%;
-            position: absolute;
             width: 100%;
         }
+
         .container {
             border-radius: 10px;
             padding: 1%;
             margin: 1% auto;
             width: 96%;
+        }
+
+        .mobiledropdown {
+            display: none;
         }
     }
 
@@ -104,6 +128,29 @@
             padding: 1%;
             margin: none;
             border-top: none;
+        }
+
+        .backdropcontainer {
+            position: fixed;
+            top: 0px;
+            right: 0px;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(4px) brightness(60%);
+        }
+
+        .mobiledropdown {
+            position: absolute;
+            background-color: var(--theme-background, white);
+            border-radius: 10px;
+            box-shadow: 1px 1px 5px rgb(148,157,166);
+            width: 90%;
+            height: 90%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 2%;
+            filter: none;
         }
     }
 
@@ -170,8 +217,13 @@
         display: block;
     }
 
-    .mobile .dropdown {
+    .mobiledropdown {
         clear: both;
+    }
+
+    .links-middle {
+        clear: both;
+        list-style: none;
     }
 
     * {
