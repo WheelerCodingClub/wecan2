@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { LayoutData } from "./$types";
     import { fly, blur } from 'svelte/transition';
+    import { beforeNavigate } from "$app/navigation";
 
     import SolidButton from "$lib/components/SolidButton.svelte";
     import HollowButton from "$lib/components/HollowButton.svelte";
@@ -10,6 +11,10 @@
     let mobileDropdown: boolean = false;
 
     export let data: LayoutData;
+
+    beforeNavigate(() => {
+        mobileDropdown = false;
+    })
 </script>
 
 <nav>
@@ -72,11 +77,6 @@ class="backdropcontainer">
 </main>
 
 <style>
-    nav, div, a, ul, li {
-        padding: 0;
-        margin: 0;
-    }
-
     main {
         padding-top: 7%;
     }
