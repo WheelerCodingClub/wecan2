@@ -7,19 +7,19 @@ import { verifyToken } from "$lib/server/auth";
 
 export const handle: Handle = async ({ event, resolve }) => {
     // if the user has a token...
-    const token = event.cookies.get("token");
-    if (token !== undefined) {
+    const rawToken = event.cookies.get("token");
+    if (rawToken !== undefined) {
         // if it's valid...
-        const result = verifyToken(token);
-        if (result.valid) {
+        const token = verifyToken(rawToken);
+        if (token) {
             // if the user exists...
             const [{ exists }]: [{ exists: boolean }] = await sql`
-                SELECT EXISTS (SELECT 1 FROM users WHERE id = ${result.id})
+                SELECT EXISTS (SELECT 1 FROM users WHERE id = ${token.id})
             `;
             if (exists) {
                 // authorize them :)
                 event.locals.user = {
-                    id: result.id
+                    id: token.id,
                 };
             }
         }
