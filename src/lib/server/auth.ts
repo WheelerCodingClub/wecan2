@@ -6,17 +6,12 @@ export function signToken(userId: number): string {
     return jwt.sign({ id: userId }, env.AUTH_SECRET as string);
 }
 
-export function verifyToken(token: string): { valid: true; id: number; } | { valid: false; } {
+export function verifyToken(token: string): { id: number; } | null {
     try {
         const { id } = jwt.verify(token, env.AUTH_SECRET as string) as JwtPayload;
-        return {
-            valid: true,
-            id,
-        };
+        return { id };
     } catch {
-        return {
-            valid: false,
-        };
+        return null;
     }
 }
 
