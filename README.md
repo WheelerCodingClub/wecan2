@@ -27,7 +27,7 @@ To migrate the database:
 npm run migrate up
 ```
 
-This must be done when the database is first created and after any new migration is added.
+This must be done when the database is first created (**or when you create a new Codespace!**) and after any new migration is added.
 
 For more information about how to use the migration tool, [ley](https://github.com/lukeed/ley):
 
