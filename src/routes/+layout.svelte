@@ -50,21 +50,8 @@
 {#if mobileDropdown}
 <div transition:blur={{amount: 4}}
 class="backdropcontainer">
-    <div transition:fly={{ duration: 300, y: -500, opacity: 0.5 }}
+    <div transition:fly={{ duration: 300, y: -250, opacity: 0.5 }}
     class="mobiledropdown">
-        <ul class="links-left">
-            {#if data.loggedIn}
-                <li class="title"><a href="/">Wecan2</a></li>
-            {:else}
-                <li class="title"><a href="/about">Wecan2</a></li>
-            {/if}
-        </ul>
-        <div class="links-right">
-            <HollowButton on:click={() => mobileDropdown = !mobileDropdown}>
-                <img src={hamburgerIcon} alt="hamburger icon">
-                <!--source: https://www.iconfinder.com/icons/134216/menu_lines_hamburger_icon-->
-            </HollowButton>
-        </div>
         <ul class="links-middle">
             {#if data.loggedIn}
                 <li><a href="/browse">Join a Club</a></li>
@@ -80,7 +67,7 @@ class="backdropcontainer">
 </div>
 {/if}
 
-<main>
+<main class:backdrop={mobileDropdown}>
     <slot />
 </main>
 
@@ -121,6 +108,7 @@ class="backdropcontainer">
             padding: none;
             margin: none;
             width: 100%;
+            z-index: 20;
         }
 
         nav .container {
@@ -136,7 +124,11 @@ class="backdropcontainer">
             right: 0px;
             width: 100%;
             height: 100%;
-            backdrop-filter: blur(4px) brightness(60%);
+            z-index: 19;
+        }
+
+        .backdrop {
+            filter: blur(4px);
         }
 
         .mobiledropdown {
@@ -145,10 +137,10 @@ class="backdropcontainer">
             border-radius: 10px;
             box-shadow: 1px 1px 5px rgb(148,157,166);
             width: 90%;
-            height: 90%;
-            top: 50%;
+            height: fit-content;
+            top: 12%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, 0);
             padding: 2%;
             filter: none;
         }
@@ -182,6 +174,11 @@ class="backdropcontainer">
 
     .links-right {
         float: right;
+    }
+
+    .links-middle {
+        clear: both;
+        list-style: none;
     }
 
     li:not(.buttonList), li:not(.title) {
@@ -219,11 +216,6 @@ class="backdropcontainer">
 
     .mobiledropdown {
         clear: both;
-    }
-
-    .links-middle {
-        clear: both;
-        list-style: none;
     }
 
     * {
