@@ -37,8 +37,26 @@ export const load: PageServerLoad = async ({ locals: { user }, params }) => {
         SELECT name FROM users WHERE id = ${club.owner}
     `;
 
+    const posts: {
+        id: number;
+        title: string;
+        content: string;
+        created: string;
+    }[] = await sql`
+        SELECT
+            id,
+            title,
+            content,
+            created
+        FROM
+            posts
+        WHERE
+            club = ${club.id}
+    `;
+
     return {
         club,
         owner,
+        posts,
     };
 };
