@@ -77,9 +77,6 @@ class="backdropcontainer">
 </main>
 
 <style>
-    main {
-        padding-top: 7%;
-    }
 
     @media only screen and (min-width: 769px) {
         nav {
@@ -98,6 +95,10 @@ class="backdropcontainer">
 
         .mobiledropdown {
             display: none;
+        }
+
+        main {
+            padding-top: 10%;
         }
     }
 
@@ -143,6 +144,10 @@ class="backdropcontainer">
             transform: translate(-50%, 0);
             padding: 2%;
             filter: none;
+        }
+
+        main {
+            padding-top: 15%;
         }
     }
 
