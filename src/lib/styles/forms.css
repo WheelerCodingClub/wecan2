@@ -1,15 +1,16 @@
 @media only screen and (min-width: 769px) {
-    form {
+    .card {
         width: 50%;
     }
 }
 
 @media only screen and (max-width: 768px) {
-    form {
+    .card {
         width: 75%;
     }
 }
-form {
+
+.card {
     border-radius: 10px;
     box-shadow: 1px 1px 5px rgb(148,157,166);
     padding: 19px;
@@ -21,7 +22,7 @@ form {
     font-weight: bold;
 }
 
-form h2 {
+.card h2 {
     text-align: center;
     margin-top: 0;
 }
@@ -29,8 +30,8 @@ form h2 {
 input[type=email],
 input[type=password],
 input[type=text],
-textarea
-{
+textarea {
+
     width: 100%;
     padding: 12px 15px;
     margin: 8px 0;
