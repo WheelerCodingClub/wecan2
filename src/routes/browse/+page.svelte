@@ -4,12 +4,14 @@
     import SolidButton from "$lib/components/SolidButton.svelte";
 
     export let data: PageData;
+
+    import '$lib/styles/forms.css'
 </script>
 
 <h1>Browse</h1>
 <ul>
     {#each data.clubs as club (club.id)}
-        <li>
+        <li class="card">
             <h2>{club.name}</h2>
             <code>[ID: {club.id}]</code>
             <h4>Description:</h4>
@@ -30,15 +32,7 @@
     }
 
     li {
-        border-radius: 10px;
-        box-shadow: 1px 1px 5px rgb(148,157,166);
-        padding: 1%;
-        margin: 2% auto;
-        width: 50%;
-    }
-
-    h2 {
-        text-align: center;
+        margin: 1% auto;
     }
 
     #description {

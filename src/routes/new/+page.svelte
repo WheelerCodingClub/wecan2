@@ -9,7 +9,7 @@
     export let form: ActionData;
 </script>
 
-<form method="POST" use:enhance>
+<form method="POST" class="card" use:enhance>
     <h2>Create a New Club</h2>
     <label class="bold">
         Name

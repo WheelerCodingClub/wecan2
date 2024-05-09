@@ -12,7 +12,7 @@
     let showPassword: boolean;
 </script>
 
-<form method="POST" use:enhance>
+<form method="POST" class="card" use:enhance>
     <h2>Sign In</h2>
     {#if form?.error}
         <p id="error" transition:fly={{x:20, duration:200}}>{form.error}</p>
