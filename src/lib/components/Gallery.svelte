@@ -27,18 +27,22 @@
     div {
         overflow: hidden;
         position: relative;
-        z-index: 5;
-    }
-
-    .right {
-        position: absolute;
-        top: 50%;
-        right: 0;
+        display: flex;
+        width: 50%;
+        margin: 0 auto;
+        justify-content: space-around;
+        align-items: center;
     }
 
     .left {
         position: absolute;
         top: 50%;
         left: 0;
+    }
+
+    .right {
+        position: absolute;
+        top: 50%;
+        right: 0;
     }
 </style>
