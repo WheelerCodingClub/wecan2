@@ -1,11 +1,7 @@
-<script lang="ts">
-    export let href: string = "";
-</script>
-
-{#if href}
-    <a {href}><slot>button</slot></a>
+{#if $$props.href}
+    <a class={$$props.class || ""} href={$$props.href}><slot>button</slot></a>
 {:else}
-    <button on:click on:focus on:mouseover on:blur on:mouseout>
+    <button class={$$props.class || ""} disabled={$$props.disabled || ""} on:click on:focus on:mouseover on:blur on:mouseout>
         <slot>button</slot>
     </button>
 {/if}
