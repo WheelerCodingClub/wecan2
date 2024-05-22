@@ -1,6 +1,7 @@
 <!--
   A gallery component to mainly be used within posts. Will likely be removed
   if used exclusively within Post.svelte
+  TODO: Make this actually look good
 -->
 <script lang="ts">
     import HollowButton from './HollowButton.svelte';
@@ -16,37 +17,37 @@
             <img src={images[0].src} alt={images[0].alt}>
         {:else}
             <img src={images[counter].src} alt={images[counter].alt}>
-            <HollowButton class="left"
-                on:click={() => counter--}
-                disabled={counter === 0}>&lt;</HollowButton>
-            <HollowButton class="right"
-                on:click={() => counter++}
-                disabled={counter === images.length - 1}>&gt;</HollowButton>
+            <div class="button-container">
+                <HollowButton
+                    on:click={() => counter--}
+                    disabled={counter === 0}>&lt;</HollowButton>
+                <HollowButton
+                    on:click={() => counter++}
+                    disabled={counter === images.length - 1}>&gt;</HollowButton>
+            </div>
         {/if}
     {/if}
 </div>
 
 <style>
-    div {
+    .card {
         overflow: hidden;
         position: relative;
         display: flex;
-        width: 250px;
-        height: 250px;
-        margin: 0 auto;
+        width: 500px;
+        height: auto;
         justify-content: space-around;
         align-items: center;
+        padding: 0;
     }
 
-    .left {
+    .button-container {
         position: absolute;
-        top: 50%;
-        left: 0;
-    }
-
-    .right {
-        position: absolute;
-        top: 50%;
-        right: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
     }
 </style>
