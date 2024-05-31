@@ -11,3 +11,4 @@ vite.config.ts.timestamp-*
 .replit
 .replit.nix
 /db
+.vscode/settings.json
