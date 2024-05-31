@@ -13,19 +13,15 @@
 
 <div class="card">
     {#if images}
-        {#if images.length === 1}
-            <img src={images[0].src} alt={images[0].alt}>
-        {:else}
-            <img src={images[counter].src} alt={images[counter].alt}>
-            <div class="button-container">
-                <HollowButton
-                    on:click={() => counter--}
-                    disabled={counter === 0}>&lt;</HollowButton>
-                <HollowButton
-                    on:click={() => counter++}
-                    disabled={counter === images.length - 1}>&gt;</HollowButton>
-            </div>
-        {/if}
+        <img src={images[counter].src} alt={images[counter].alt}>
+        <div class="button-container">
+            <HollowButton
+                on:click={() => counter--}
+                disabled={counter === 0}>&lt;</HollowButton>
+            <HollowButton
+                on:click={() => counter++}
+                disabled={counter === images.length - 1}>&gt;</HollowButton>
+        </div>
     {/if}
 </div>
 
