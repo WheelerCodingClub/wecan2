@@ -6,11 +6,19 @@
 <script lang="ts">
     import HollowButton from './HollowButton.svelte';
     import '$lib/styles/forms.css'
-
+    import Carousel from 'svelte-carousel';
+    import { browser } from '$app/environment';
     export let images: {src: string, alt: string}[];
     let counter: number = 0;
-</script>
 
+
+    let carousel; // for calling methods of the carousel instance
+    
+    const handleNextClick = () => {
+        carousel.goToNext()
+  }
+</script>
+<!--
 <div class="card">
     {#if images}
         <img src={images[counter].src} alt={images[counter].alt}>
@@ -24,6 +32,9 @@
         </div>
     {/if}
 </div>
+-->
+
+
 
 <style>
     .card {
