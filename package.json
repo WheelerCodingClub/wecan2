@@ -15,7 +15,8 @@
 		"bcrypt": "^5.1.1",
 		"dotenv": "^16.4.5",
 		"jsonwebtoken": "^9.0.2",
-		"postgres": "^3.4.4"
+		"postgres": "^3.4.4",
+		"svelte-carousel": "^1.0.25"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-node": "^5.0.1",
