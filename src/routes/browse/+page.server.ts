@@ -1,26 +1,28 @@
 import type { PageServerLoad } from "./$types";
-import sql from "$lib/server/db";
+
+import { eq, or } from "$lib/server/db/query";
+import { ClubVisibility } from "$lib/db/types";
+import { clubs } from "$lib/server/db/schema";
+import db from "$lib/server/db";
 
 export const load: PageServerLoad = async ({ locals: { user } }) => {
-    const clubs: {
-        id: number;
-        name: string;
-        description: string;
-    }[] = await sql`
-        SELECT
-            id,
-            name,
-            description
-        FROM
-            clubs
-        WHERE
-            visibility = 'public'
-            ${user ? sql`OR owner = ${user.id}` : sql``}
-        ORDER BY
-            name
-    `;
+    const result = db.query.clubs
+        .findMany({
+            columns: {
+                id: true,
+                name: true,
+                description: true,
+            },
+            where: or(
+                // the club is public
+                eq(clubs.id, ClubVisibility.PUBLIC),
+                // or the user is its owner.
+                user ? eq(clubs.owner, user.id) : undefined,
+            ),
+        })
+        .sync();
 
     return {
-        clubs,
+        clubs: result,
     };
 };

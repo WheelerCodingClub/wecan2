@@ -5,8 +5,8 @@
 </script>
 
 <h1>My Awesome Account Settings Page</h1>
-<div style = "border: 2px solid black; width:480px; padding: 5px;">
-    <dl style = "margin-left: 1em; margin-right: 1em;">
+<div style="border: 2px solid black; width:480px; padding: 5px;">
+    <dl style="margin-left: 1em; margin-right: 1em;">
         <dt>ID</dt>
         <dd><code>{data.id}</code></dd>
         <dt>Name</dt>
@@ -14,6 +14,6 @@
         <dt>Email</dt>
         <dd><code>{data.email}</code></dd>
         <dt>Created at</dt>
-        <dd><code>{data.created}</code></dd>
+        <dd><code>{data.createdAt}</code></dd>
     </dl>
 </div>

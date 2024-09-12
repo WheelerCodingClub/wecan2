@@ -1,23 +1,27 @@
-<!--
-  A gallery component to mainly be used within posts. Will likely be removed
-  if used exclusively within Post.svelte
-  TODO: Make this actually look good
--->
 <script lang="ts">
-    import HollowButton from './HollowButton.svelte';
-    import '$lib/styles/forms.css'
-    import Carousel from 'svelte-carousel';
-    import { browser } from '$app/environment';
-    export let images: {src: string, alt: string}[];
+    /*
+        A gallery component to mainly be used within posts. Will likely be removed
+        if used exclusively within Post.svelte
+        TODO: Make this actually look good
+    */
+
+    import "$lib/styles/forms.css";
+    import Carousel from "svelte-carousel";
+    import HollowButton from "./HollowButton.svelte";
+
+    export let images: {
+        src: string;
+        alt: string;
+    }[] = [];
+
     let counter: number = 0;
-
-
-    let carousel; // for calling methods of the carousel instance
+    let carousel: Carousel; // for calling methods of the carousel instance
     
     const handleNextClick = () => {
-        carousel.goToNext()
-  }
+        carousel.goToNext();
+    };
 </script>
+
 <!--
 <div class="card">
     {#if images}
@@ -33,8 +37,6 @@
     {/if}
 </div>
 -->
-
-
 
 <style>
     .card {

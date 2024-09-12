@@ -1,9 +1,10 @@
 <script lang="ts">
-    let arr = new Array()
-    for(let a = 0; a < 100000; a++){
-        arr.push(a);
+    const arr: number[] = [];
+    for (let i  = 0; i < 1000; i++) {
+        arr.push(i);
     }
 </script>
+
 <p>Thank you Nicolas</p>
 <h1>Really long scrolling to test navbar</h1>
 {#each arr as item}

@@ -1,6 +1,10 @@
 import type { Actions, PageServerLoad } from "./$types";
 import { error, fail, redirect } from "@sveltejs/kit";
-import sql from "$lib/server/db";
+
+import { and, eq } from "$lib/server/db/query";
+import { clubs, posts } from "$lib/server/db/schema";
+import db from "$lib/server/db";
+import { rowExists } from "$lib/server/db/helper";
 
 export const load: PageServerLoad = ({ locals: { user } }) => {
     if (!user) error(403, "Forbidden");
@@ -15,16 +19,16 @@ export const actions: Actions = {
         // user must be logged in
         if (!user) error(403, "Forbidden");
 
-        // to post, the club must exist, and the user must be its owner
-        const [{ exists: userOwnsClub }]: [{ exists: boolean }] = await sql`
-            SELECT EXISTS (
-                SELECT 1 FROM clubs
-                WHERE
-                    id = ${clubId}
-                    AND owner = ${user.id}
-            )
-        `;
-        if (!userOwnsClub) error(403, "Forbidden");
+        const clubExistsAndUserOwnsIt = rowExists(
+            clubs,
+            and(
+                // the club must exist
+                eq(clubs.id, clubId),
+                // and the user must be its owner.
+                eq(clubs.owner, user.id)
+            ),
+        );
+        if (!clubExistsAndUserOwnsIt) error(403, "Forbidden");
 
         const data = await request.formData();
 
@@ -42,19 +46,18 @@ export const actions: Actions = {
         // TODO: post content length limit
 
         // create post
-        const [{ id: postId }]: [{ id: number }] = await sql`
-            INSERT INTO posts (
-                club,
+        const { id: postId } = db
+            .insert(posts)
+            .values({
+                club: clubId,
                 title,
                 content,
-                created
-            ) VALUES (
-                ${clubId},
-                ${title},
-                ${content},
-                now()
-            ) RETURNING id
-        `;
+                createdAt: Date.now(),
+            })
+            .returning({
+                id: posts.id,
+            })
+            .get();
 
         redirect(303, `/view/${clubId}`);
     },

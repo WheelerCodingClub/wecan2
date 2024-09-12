@@ -7,7 +7,11 @@ import {
 } from "$lib/server/auth";
 import { Error } from "$lib/types/error";
 import bcrypt from "bcrypt";
-import sql from "$lib/server/db";
+
+import db from "$lib/server/db";
+import { users } from "$lib/server/db/schema";
+import { eq } from "$lib/server/db/query";
+import { rowExists } from "$lib/server/db/helper";
 
 export const load: PageServerLoad = ({ locals: { user } }) => {
     if (user) redirect(303, "/");
@@ -46,26 +50,23 @@ export const actions: Actions = {
         if (password !== confirmPassword) return sfail(400, Error.password_confirm);
 
         // check if email is already registered
-        const [{ exists }]: [{ exists: boolean }] = await sql`
-            SELECT EXISTS (SELECT 1 FROM users WHERE email = ${email})
-        `;
-        if (exists) return sfail(400, Error.email_taken);
+        const alreadyRegistered = rowExists(users, eq(users.email, email));
+        if (alreadyRegistered) return sfail(400, Error.email_taken);
 
         // register user
         const passwordHash = await bcrypt.hash(password, 12);
-        const [{ id: userId }]: [{ id: number }] = await sql`
-            INSERT INTO users (
+        const { id: userId } = db
+            .insert(users)
+            .values({
                 name,
                 email,
-                password,
-                created
-            ) VALUES (
-                ${name},
-                ${email},
-                ${passwordHash},
-                now()
-            ) RETURNING id
-        `;
+                password: passwordHash,
+                createdAt: Date.now(),
+            })
+            .returning({
+                id: users.id,
+            })
+            .get();
 
         // generate token and log the user in
         const token = signToken(userId);

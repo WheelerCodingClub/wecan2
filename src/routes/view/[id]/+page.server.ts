@@ -1,62 +1,59 @@
-import type { ClubVisibility } from "$lib/server/db";
 import type { PageServerLoad } from "./$types";
 import { error } from "@sveltejs/kit";
-import sql from "$lib/server/db";
+
+import { ClubVisibility } from "$lib/db/types";
+import { and, eq, ne, or } from "$lib/server/db/query";
+import { clubs } from "$lib/server/db/schema";
+import db from "$lib/server/db";
 
 export const load: PageServerLoad = async ({ locals: { user }, params }) => {
     const clubId = parseInt(params.id);
     if (isNaN(clubId)) error(404, "Not Found");
 
-    const [club]: [
-        {
-            id: number;
-            owner: number;
-            name: string;
-            description: string;
-            visibility: ClubVisibility;
-            created: string;
-        }?,
-    ] = await sql`
-        SELECT
-            id,
-            owner,
-            name,
-            description,
-            visibility,
-            created
-        FROM
-            clubs
-        WHERE
-            id = ${clubId}
-            AND (visibility != 'private'
-                ${user ? sql`OR owner = ${user.id}` : sql``})
-    `;
+    const club = db.query.clubs
+        .findFirst({
+            columns: {
+                id: true,
+                name: true,
+                description: true,
+                visibility: true,
+                createdAt: true,
+            },
+            where: and(
+                eq(clubs.id, clubId),
+                or(
+                    // either the club is not private
+                    ne(clubs.visibility, ClubVisibility.PRIVATE),
+                    // or the user is logged in and owns it.
+                    user ? eq(clubs.owner, user.id) : undefined,
+                ),
+            ),
+            with: {
+                owner: {
+                    columns: {
+                        id: true,
+                        name: true,
+                    },
+                },
+                posts: {
+                    columns: {
+                        id: true,
+                        title: true,
+                        content: true,
+                        createdAt: true,
+                    },
+                },
+            },
+        })
+        .sync();
     if (!club) error(404, "Not Found");
 
-    const [owner]: [{ name: string }] = await sql`
-        SELECT name FROM users WHERE id = ${club.owner}
-    `;
-
-    const posts: {
-        id: number;
-        title: string;
-        content: string;
-        created: string;
-    }[] = await sql`
-        SELECT
-            id,
-            title,
-            content,
-            created
-        FROM
-            posts
-        WHERE
-            club = ${club.id}
-    `;
-
     return {
-        club,
-        owner,
-        posts,
+        ...club,
+        createdAt: new Date(club.createdAt),
+        posts: club.posts.map((post) => ({
+            ...post,
+            createdAt: new Date(post.createdAt),
+        })),
     };
 };

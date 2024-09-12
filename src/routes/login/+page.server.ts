@@ -7,7 +7,10 @@ import {
 } from "$lib/server/auth";
 import { Error } from "$lib/types/error";
 import bcrypt from "bcrypt";
-import sql from "$lib/server/db";
+
+import db from "$lib/server/db";
+import { eq } from "$lib/server/db/query";
+import { users } from "$lib/server/db/schema";
 
 export const load: PageServerLoad = ({ locals: { user } }) => {
     if (user) redirect(303, "/");
@@ -32,14 +35,15 @@ export const actions: Actions = {
         if (typeof password !== "string") return sfail(400, Error.password_invalid);
 
         // retrieve information and check if user exists
-        const [user]: [
-            {
-                id: number;
-                password: string;
-            }?,
-        ] = await sql`
-            SELECT id, password FROM users WHERE email = ${email}
-        `;
+        const user = db.query.users
+            .findFirst({
+                columns: {
+                    id: true,
+                    password: true,
+                },
+                where: eq(users.email, email),
+            })
+            .sync();
         if (!user) return sfail(401, Error.unauthorized);
 
         // check if password matches

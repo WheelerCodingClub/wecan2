@@ -1,12 +1,14 @@
 <script lang="ts">
+    import "$lib/styles/forms.css";
+    import Gallery from "$lib/components/Gallery.svelte";
+
     export let title: string;
     export let description: string;
-    export let images: {src: string, alt: string}[] = [ ];
+    export let images: {
+        src: string;
+        alt: string;
+    }[] = [];
     export let club: string;
-
-    import '$lib/styles/forms.css';
-
-    import Gallery from '$lib/components/Gallery.svelte';
 </script>
 
 <div class="card">

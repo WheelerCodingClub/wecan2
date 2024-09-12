@@ -1,11 +1,9 @@
 <script lang="ts">
+    import "$lib/styles/forms.css";
     import type { PageData } from "./$types";
-
     import SolidButton from "$lib/components/SolidButton.svelte";
 
     export let data: PageData;
-
-    import '$lib/styles/forms.css'
 </script>
 
 <h1>Browse</h1>

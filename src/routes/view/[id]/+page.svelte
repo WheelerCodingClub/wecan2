@@ -1,28 +1,29 @@
 <script lang="ts">
+    import { ClubVisibility } from "$lib/db/types";
     import type { PageData } from "./$types";
 
     export let data: PageData;
 </script>
 
-<h1>{data.club.name}</h1>
-<p>{data.club.description}</p>
+<h1>{data.name}</h1>
+<p>{data.description}</p>
 <hr>
 <dl>
     <dt>ID</dt>
-    <dd><code>{data.club.id}</code></dd>
+    <dd><code>{data.id}</code></dd>
     <dt>Owner</dt>
     <dd>
         <dl>
             <dt>ID</dt>
-            <dd><code>{data.club.owner}</code></dd>
+            <dd><code>{data.owner.id}</code></dd>
             <dt>Name</dt>
             <dd><code>{data.owner.name}</code></dd>
         </dl>
     </dd>
     <dt>Visibility</dt>
-    <dd><code>{data.club.visibility}</code></dd>
+    <dd><code>{ClubVisibility[data.visibility]}</code></dd>
     <dt>Created at</dt>
-    <dd><code>{data.club.created}</code></dd>
+    <dd><code>{data.createdAt}</code></dd>
 </dl>
 <h2>Posts</h2>
 <ul>
@@ -34,7 +35,7 @@
                 <dt>ID</dt>
                 <dd><code>{post.id}</code></dd>
                 <dt>Created at</dt>
-                <dd><code>{post.created}</code></dd>
+                <dd><code>{post.createdAt}</code></dd>
             </dl>
         </li>
     {/each}
