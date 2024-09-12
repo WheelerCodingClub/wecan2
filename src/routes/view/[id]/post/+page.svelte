@@ -1,11 +1,9 @@
 <script lang="ts">
+    import "$lib/styles/forms.css";
     import type { ActionData } from "./$types";
-    import { enhance } from "$app/forms";
-
     import SolidButton from "$lib/components/SolidButton.svelte";
-
-    import '$lib/styles/forms.css';
-
+    import { enhance } from "$app/forms";
+    
     export let form: ActionData;
 </script>
 
@@ -26,7 +24,7 @@
 <style>
     textarea::placeholder,
     input::placeholder {
-        font-family: 'Varela Round', sans-serif;
+        font-family: "Varela Round", sans-serif;
         font-size: 1rem;
     }
 

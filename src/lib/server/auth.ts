@@ -1,14 +1,14 @@
 import type { JwtPayload } from "jsonwebtoken";
-import { env } from "node:process";
+import { env } from "$env/dynamic/private";
 import jwt from "jsonwebtoken";
 
 export function signToken(userId: number): string {
-    return jwt.sign({ id: userId }, env.AUTH_SECRET as string);
+    return jwt.sign({ id: userId }, env.WECAN_SECRET!);
 }
 
 export function verifyToken(token: string): { id: number; } | null {
     try {
-        const { id } = jwt.verify(token, env.AUTH_SECRET as string) as JwtPayload;
+        const { id } = jwt.verify(token, env.WECAN_SECRET!) as JwtPayload;
         return { id };
     } catch {
         return null;

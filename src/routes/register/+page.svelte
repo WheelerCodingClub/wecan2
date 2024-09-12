@@ -1,11 +1,9 @@
 <script lang="ts">
+    import "$lib/styles/forms.css";
     import type { ActionData } from "./$types";
+    import SolidButton from "$lib/components/SolidButton.svelte";
     import { enhance } from "$app/forms";
-    import { fly } from 'svelte/transition';
-
-    import SolidButton from '$lib/components/SolidButton.svelte';
-
-    import '$lib/styles/forms.css';
+    import { fly } from "svelte/transition";
 
     export let form: ActionData;
 

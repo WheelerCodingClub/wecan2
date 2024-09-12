@@ -26,67 +26,87 @@ This is a wheeler coding club group project. The purpose of it is to create a pl
 
 ## Developing
 
-### Creating a database
+### Setting up the environment
 
-A [PostgreSQL](https://www.postgresql.org/) database is required to run the site.
+1. [Install Node.js](https://nodejs.org/en/download/package-manager).
+2. [Install pnpm](https://pnpm.io/installation).
+3. Install [SQLite](https://www.sqlite.org/download.html). On many Linux distributions, the package is simply named `sqlite` or `sqlite3`. On Windows, you may install it by running `winget install SQLite.SQLite` in the command prompt.
+4. Clone the repository:
+   ```sh
+   git clone https://github.com/WheelerCodingClub/wecan2.git
+   cd wecan2
+   ```
+5. Install dependencies:
+   ```sh
+   pnpm install
+   ```
+
+#### Nix
+
+If you are using Nix, see [`shell.nix`](shell.nix).
+
+#### Development container
+
+The repository has a [development container](https://containers.dev/) configured for GitHub Codespaces. It provides all the necessary packages.
+
+#### Project IDX
+
+The repository is also configured for [Project IDX](https://developers.google.com/idx).
+
+### Configuration
 
 Once set up, you will need to create a `.env` file containing configuration environment variables:
 
-```ini
-AUTH_SECRET=abcdefghijklmnopqrstuvwxyz1234567890
-PGHOST=localhost
-PGPORT=5432
-PGDATABASE=db
-PGUSERNAME=user
-PGPASSWORD=password
-```
+- `WECAN_SECRET`:
 
-To migrate the database:
+  The secret to sign user authentication tokens with. During development, this can be anything (see the example), but it should be securely generated in production. If it is changed, all existing tokens will be invalidated.
 
-```bash
-npm run migrate up
-```
+- `WECAN_DATABASE`:
 
-This must be done when the database is first created (**or when you create a new Codespace!**) and after any new migration is added.
+  The location of the SQLite database.
+  - Use `:memory:` for a temporary, in-memory database that is **erased** when the server stops.
+  - Use a path like `./db.sqlite3` for a persistent one.
 
-For more information about how to use the migration tool, [ley](https://github.com/lukeed/ley):
-
-```bash
-npm run migrate -- --help
-```
+See [`.env.example`](.env.example) for example configuration.
 
 ### Starting a server
 
-After installing dependencies using `npm install`, start a development server:
+After installing dependencies using `pnpm install`, start a development server:
 
-```bash
-npm run dev
+```sh
+pnpm dev
 ```
 
 Alternatively, start a development server and automatically open the site in a new browser tab:
 
-```bash
-npm run dev -- --open
+```sh
+pnpm dev --open
 ```
 
-### Codespaces
+### Updating the database schema
 
-The repository has a development container configured for GitHub Codespaces. It includes a PostgreSQL server as well as several useful extensions.
+Database migrations are handled by [Drizzle](https://orm.drizzle.team/).
 
-Some notes:
+After changing the database schema defined in [`schema.ts`](src/lib/server/db/schema.ts), tell Drizzle to generate the SQL to migrate the database:
 
-- All of the Postgres environment variables are configured by the container and do not need to be provided in `.env`.
-- SvelteKit's CSRF protection is disabled when the site is built in Codespaces.
+```sh
+pnpm generate
+```
+
+The server will automatically run all necessary database migrations when it starts.
 
 ## Building
 
 To build a production version of the site:
 
-```bash
-npm run build
+```sh
+pnpm build
 ```
 
-You can preview the production build with `npm run preview`.
+You can preview the production build with `pnpm preview`.
+
+> [!NOTE]
+> SvelteKit's CSRF protection is disabled when the site is built inside GitHub Codespaces and Project IDX.
 
 ## Goals
 

@@ -1,24 +1,28 @@
 import type { PageServerLoad } from "./$types";
 import { error } from "@sveltejs/kit";
-import sql from "$lib/server/db";
+
+import db from "$lib/server/db";
+import { eq } from "$lib/server/db/query";
+import { users } from "$lib/server/db/schema";
 
 export const load: PageServerLoad = async ({ locals: { user } }) => {
     if (!user) error(403, "Forbidden");
 
-    const [{ name, email, created }]: [
-        {
-            name: string;
-            email: string;
-            created: string;
-        },
-    ] = await sql`
-        SELECT name, email, created FROM users WHERE id = ${user.id}
-    `;
+    const { name, email, createdAt } = db.query.users
+        .findFirst({
+            columns: {
+                name: true,
+                email: true,
+                createdAt: true,
+            },
+            where: eq(users.id, user.id),
+        })
+        .sync()!;
 
     return {
         id: user.id,
         name,
         email,
-        created,
+        createdAt: new Date(createdAt),
     };
 };

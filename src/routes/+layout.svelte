@@ -1,6 +1,7 @@
 <script lang="ts">
+    import "$lib/styles/global.css";
     import type { LayoutData } from "./$types";
-    import { fly, blur } from 'svelte/transition';
+    import { fly, blur } from "svelte/transition";
     import { beforeNavigate } from "$app/navigation";
 
     import SolidButton from "$lib/components/SolidButton.svelte";
@@ -14,7 +15,7 @@
 
     beforeNavigate(() => {
         mobileDropdown = false;
-    })
+    });
 </script>
 
 <nav>
@@ -77,7 +78,6 @@ class="backdropcontainer">
 </main>
 
 <style>
-
     @media only screen and (min-width: 769px) {
         nav {
             top: 0px;
@@ -224,6 +224,6 @@ class="backdropcontainer">
     }
 
     * {
-        font-family: 'Varela Round', sans-serif;
+        font-family: "Varela Round", sans-serif;
     }
 </style>

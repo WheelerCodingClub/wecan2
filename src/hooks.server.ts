@@ -1,9 +1,14 @@
-// load the .env file
-import "dotenv/config";
-
 import type { Handle } from "@sveltejs/kit";
-import sql from "$lib/server/db";
+import { migrate } from "drizzle-orm/better-sqlite3/migrator";
 import { verifyToken } from "$lib/server/auth";
+
+import db from "$lib/server/db";
+import { eq } from "$lib/server/db/query";
+import { rowExists } from "$lib/server/db/helper";
+import { users } from "$lib/server/db/schema";
+
+// execute migrations on start.
+migrate(db, { migrationsFolder: "migrations" });
 
 export const handle: Handle = async ({ event, resolve }) => {
     // if the user has a token...
@@ -13,10 +18,8 @@ export const handle: Handle = async ({ event, resolve }) => {
         const token = verifyToken(rawToken);
         if (token) {
             // if the user exists...
-            const [{ exists }]: [{ exists: boolean }] = await sql`
-                SELECT EXISTS (SELECT 1 FROM users WHERE id = ${token.id})
-            `;
-            if (exists) {
+            const userExists = rowExists(users, eq(users.id, token.id));
+            if (userExists) {
                 // authorize them :)
                 event.locals.user = {
                     id: token.id,

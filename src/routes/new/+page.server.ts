@@ -1,6 +1,9 @@
 import type { Actions, PageServerLoad } from "./$types";
 import { error, fail, redirect } from "@sveltejs/kit";
-import sql from "$lib/server/db";
+
+import { ClubVisibility } from "$lib/db/types";
+import { clubs } from "$lib/server/db/schema";
+import db from "$lib/server/db";
 
 export const load: PageServerLoad = ({ locals: { user } }) => {
     if (!user) error(403, "Forbidden");
@@ -27,21 +30,19 @@ export const actions: Actions = {
         // TODO: club description length limit
 
         // create club
-        const [{ id: clubId }]: [{ id: number }] = await sql`
-            INSERT INTO clubs (
-                owner,
+        const { id: clubId } = db
+            .insert(clubs)
+            .values({
+                owner: user.id,
                 name,
                 description,
-                visibility,
-                created
-            ) VALUES (
-                ${user.id},
-                ${name},
-                ${description},
-                'public',
-                now()
-            ) RETURNING id
-        `;
+                visibility: ClubVisibility.PUBLIC,
+                createdAt: Date.now(),
+            })
+            .returning({
+                id: clubs.id,
+            })
+            .get();
 
         redirect(303, `/view/${clubId}`);
     },
