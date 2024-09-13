@@ -1,5 +1,25 @@
 # Neha-WECAN 2
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/WheelerCodingClub/wecan2?quickstart=1)
+<a href="https://idx.google.com/import?url=https%3A%2F%2Fgithub.com%2FWheelerCodingClub%2Fwecan2">
+  <picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="https://cdn.idx.dev/btn/open_dark_32.svg"
+    >
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="https://cdn.idx.dev/btn/open_light_32.svg"
+    >
+    <img
+      height="32"
+      alt="Open in IDX"
+      src="https://cdn.idx.dev/btn/open_purple_32.svg"
+    >
+  </picture>
+</a>
+![GitHub Actions workflow status](https://img.shields.io/github/actions/workflow/status/WheelerCodingClub/wecan2/ci.yml)
+
 ## What is this?
 
 This is a wheeler coding club group project. The purpose of it is to create a platform for people to find clubs/ activities and have a place for them to share information about them. This is very in development, so this will likely change often (can you tell I'm just yapping for a placeholder? :smile:)
