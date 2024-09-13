@@ -17,8 +17,7 @@
       src="https://cdn.idx.dev/btn/open_purple_32.svg"
     >
   </picture>
-</a>
-
+</a>  
 ![GitHub Actions workflow status](https://img.shields.io/github/actions/workflow/status/WheelerCodingClub/wecan2/ci.yml)
 
 ## What is this?
