@@ -24,6 +24,10 @@
 
 This is a wheeler coding club group project. The purpose of it is to create a platform for people to find clubs/ activities and have a place for them to share information about them. This is very in development, so this will likely change often (can you tell I'm just yapping for a placeholder? :smile:)
 
+## Goals
+
+This will be a website where people can post their clubs and activities on, and (if possible) share announcements to users who are in the club.
+
 ## Developing
 
 ### Setting up the environment
@@ -107,57 +111,3 @@ You can preview the production build with `pnpm preview`.
 
 > [!NOTE]
 > SvelteKit's CSRF protection is disabled when the site is built inside GitHub Codespaces and Project IDX.
-
-## Goals
-
-This will be a website where people can post their clubs and activities on, and (if possible) share announcements to users who are in the club.
-
-### Things to do
-
-- [ ] home page (honestly, this could probably just be a port of the old home page)
-  - [ ] design
-  - [ ] layout
-- [ ] club discovery page
-  - [ ] design
-  - [ ] layout
-  - [ ] functionality
-- [ ] club management page
-  - [ ] design
-  - [ ] layout
-  - [ ] functionality
-- [ ] club announcements page
-  - [ ] design
-  - [ ] layout
-  - [ ] functionality
-- [ ] login page
-  - [ ] design
-  - [ ] layout
-  - [ ] functionality
-  - [ ] authentication
-- [ ] backend
-  - [x] email/password authentication
-  - [ ] OAuth 2.0 authentication
-  - [ ] database
-    - [ ] provider
-      - probably PostgreSQL from somewhere, could be on the same server
-    - [x] migrations
-    - we need to store:
-      - user info
-        - [x] basic account information (name, email, password)
-        - [ ] session data
-        - [ ] OAuth 2.0 data
-        - as it is a club discovery site, I don't imagine there being much front-facing user information, so very little profile data. probably just names and profile pictures
-      - club info
-        - [x] name/description
-        - [ ] tags/keywords/categories for search
-        - [x] visibility: hidden from search (unlisted) / hidden from view (private)
-        - [ ] logo image
-        - [ ] banner image
-        - ...and more? contacts, meeting times and locations, people involved (leadership/sponsor?), etc.
-      - club posts
-        - [ ] title/content
-        - [ ] banner image?
-      - club access
-        - there needs to be a permission system. a club owner must be able to appoint users to edit club information and (separately!) appoint users to make posts and so on.
-        - there likely also needs to be admin users that can edit any club in case a Situation happens, but that is a separate thing
-  - [ ] functions to get info from database and modify data in database
