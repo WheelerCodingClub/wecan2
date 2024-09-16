@@ -3,6 +3,7 @@ name: ci
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -16,11 +17,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: setup pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
 
       - name: install dependencies
         shell: bash
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: check site
         shell: bash
