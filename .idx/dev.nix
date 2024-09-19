@@ -4,7 +4,7 @@ let
   nodePackages = pkgs.nodePackages_latest;
 in
 {
-  channel = "stable-23.11";
+  channel = "unstable";
 
   # https://search.nixos.org/packages
   packages = [
