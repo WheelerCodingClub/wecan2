@@ -62,10 +62,12 @@ class="backdropcontainer">
     class="mobiledropdown">
         <ul class="links-middle">
             {#if data.loggedIn}
+                <li><a href="/about">About Us</a></li>
                 <li><a href="/browse">Join a Club</a></li>
                 <li><a href="/me">Account Information</a></li>
                 <li><a href="/logout">Logout</a></li>
             {:else}
+                <li><a href="/about">About Us</a></li>
                 <li><a href="/register">Join a Club</a></li>
                 <li><a href="/login">Log In</a></li>
                 <li><a href="/register">Register</a></li>
