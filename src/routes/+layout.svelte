@@ -203,8 +203,8 @@ class="backdropcontainer">
     .dropdown-content {
         display: none;
         position: absolute;
-        top: 50px;
-        right: -20px;
+        top: 36px;
+        right: 0px;
         background-color: var(--theme-background, white);
         box-shadow: 1px 1px 5px rgb(148,157,166);
         border-radius: 10px;
