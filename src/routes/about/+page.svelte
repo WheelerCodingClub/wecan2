@@ -4,7 +4,7 @@
         arr.push(i);
     }
 </script>
-
+<title>WECAN 2</title>
 <p>Thank you Nicolas</p>
 <h1>Really long scrolling to test navbar</h1>
 {#each arr as item}
