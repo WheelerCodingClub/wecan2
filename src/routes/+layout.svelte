@@ -197,11 +197,14 @@ class="backdropcontainer">
         font-weight: bold;
     }
 
+    .dropdown {
+        position: relative;
+    }
     .dropdown-content {
         display: none;
         position: absolute;
-        top: 60px;
-        right: 28px;
+        top: 50px;
+        right: -20px;
         background-color: var(--theme-background, white);
         box-shadow: 1px 1px 5px rgb(148,157,166);
         border-radius: 10px;
