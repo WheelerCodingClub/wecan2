@@ -29,6 +29,7 @@
         </ul>
         <ul class="links-right desktop">
             {#if data.loggedIn}
+                <li class="buttonList"><HollowButton href="/about">About Us</HollowButton></li>
                 <li class="buttonList"><HollowButton href="/browse">Join a Club</HollowButton></li>
                 <li class="buttonList">
                     <div class="dropdown">
@@ -40,7 +41,8 @@
                     </div>
                 </li>
             {:else}
-                <li><a href="/register">Join a Club</a></li>
+                <li class="buttonList"><HollowButton href="/about">About Us</HollowButton></li>
+                <li class="buttonList"><HollowButton href="/register">Join a Club</HollowButton></li>
                 <li class="buttonList"><HollowButton href="/login">Log In</HollowButton></li>
                 <li class="buttonList"><SolidButton href="/register">Register</SolidButton></li>
             {/if}
