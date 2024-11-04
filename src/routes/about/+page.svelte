@@ -8,8 +8,11 @@
     <title>WECAN 2</title>
 </svelte:head>
 <h1>About Us</h1>
+<br/>
 <p>Nothing here yet, don't know what's gonna be here tbh.</p>
+<br/>
 <hr/>
+<br/>
 <h3>Really long scrolling to test navbar</h3>
 {#each arr as item}
     <p>{item}</p>
