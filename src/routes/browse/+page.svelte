@@ -6,6 +6,10 @@
     export let data: PageData;
 </script>
 
+<svelte:head>
+    <title>Join a Club</title>
+</svelte:head>
+
 <h1>Browse</h1>
 <ul>
     {#each data.clubs as club (club.id)}

@@ -10,6 +10,10 @@
     let showPassword: boolean;
 </script>
 
+<svelte:head>
+    <title>Login</title>
+</svelte:head>
+
 <form method="POST" class="card" use:enhance>
     <h2>Sign In</h2>
     {#if form?.error}

@@ -4,9 +4,11 @@
         arr.push(i);
     }
 </script>
+
 <svelte:head>
-    <title>WECAN 2</title>
+    <title>About Us</title>
 </svelte:head>
+
 <h1>About Us</h1>
 <br/>
 <p>Nothing here yet, don't know what's gonna be here tbh.</p>

@@ -2,6 +2,10 @@
     import Post from "$lib/components/Post.svelte";
 </script>
 
+<svelte:head>
+    <title>WECAN 2</title>
+</svelte:head>
+
 <Post
     title="Club"
     description="asdlfhalksdfhapsieudyrkjabsdflkhgasdkufgaisjdlvkjagsdhovckjhalkesufdy"
