@@ -1,6 +1,6 @@
 <script lang="ts">
     const arr: number[] = [];
-    for (let i  = 0; i < 1000; i++) {
+    for (let i  = 0; i < Number.MAX_SAFE_INTEGER; i++) {
         arr.push(i);
     }
 </script>
