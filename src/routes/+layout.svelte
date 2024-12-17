@@ -18,7 +18,7 @@
     });
 </script>
 
-<nav>
+<nav data-sveltekit-reload>
     <div class="container">
         <ul class="links-left">
             {#if data.loggedIn}
@@ -42,7 +42,7 @@
                 </li>
             {:else}
                 <li class="buttonList"><HollowButton href="/about">About Us</HollowButton></li>
-                <li class="buttonList"><HollowButton href="/register">Join a Club</HollowButton></li>
+                <li class="buttonList"><HollowButton href="/register?joinRedirect">Join a Club</HollowButton></li>
                 <li class="buttonList"><HollowButton href="/login">Log In</HollowButton></li>
                 <li class="buttonList"><SolidButton href="/register">Register</SolidButton></li>
             {/if}
@@ -60,7 +60,7 @@
 class="backdropcontainer">
     <div transition:fly={{ duration: 300, y: -250, opacity: 0.5 }}
     class="mobiledropdown">
-        <ul class="links-middle">
+        <ul class="links-middle" data-sveltekit-reload>
             {#if data.loggedIn}
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/browse">Join a Club</a></li>
@@ -68,7 +68,7 @@ class="backdropcontainer">
                 <li><a href="/logout">Logout</a></li>
             {:else}
                 <li><a href="/about">About Us</a></li>
-                <li><a href="/register">Join a Club</a></li>
+                <li><a href="/register?joinRedirect">Join a Club</a></li>
                 <li><a href="/login">Log In</a></li>
                 <li><a href="/register">Register</a></li>
             {/if}

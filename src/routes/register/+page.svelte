@@ -4,16 +4,21 @@
     import SolidButton from "$lib/components/SolidButton.svelte";
     import { enhance } from "$app/forms";
     import { fly } from "svelte/transition";
+    import { page } from "$app/stores";
 
     export let form: ActionData;
 
     let showPassword: boolean;
+
+    const joinRedirect: boolean = $page.url.searchParams.has('joinRedirect');
 </script>
 
 <svelte:head>
     <title>Register</title>
 </svelte:head>
-
+{#if joinRedirect}
+    <h3 style="text-align: center; margin-bottom: 15px;">You must register or log in to join a club.</h3>
+{/if}
 <form method="POST" class="card" use:enhance>
     <h2>Register</h2>
     {#if form?.error}
