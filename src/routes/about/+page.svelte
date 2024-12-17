@@ -1,11 +1,3 @@
-<style lang="css">
-    * {
-        margin: auto 15px;
-    }
-    hr {
-        margin: auto;
-    }
-</style>
 <script lang="ts">
     const arr: number[] = [];
     for (let i  = 0; i < 100; i++) {
