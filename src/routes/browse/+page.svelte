@@ -11,6 +11,12 @@
 </svelte:head>
 
 <h1>Browse</h1>
+
+{#if !(Object.keys(data.clubs).length)}
+    <br/>
+    <h3>Unfortunately there aren't any clubs in here yet.</h3>
+{/if}
+
 <ul>
     {#each data.clubs as club (club.id)}
         <li class="card">
