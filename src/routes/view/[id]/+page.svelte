@@ -7,7 +7,7 @@
 
 <h1>{data.name}</h1>
 <p>{data.description}</p>
-<hr>
+<hr style="margin: 5px 0px;"/>
 <dl>
     <dt>ID</dt>
     <dd><code>{data.id}</code></dd>
