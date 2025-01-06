@@ -16,7 +16,7 @@
 <hr/>
 <br/>
 <h3>Really long scrolling to test navbar</h3>
-<ul style="list-style-type:disc; margin-left: 1em;">
+<ul style="list-style-type:disc; margin-left: 18pt;">
     {#each arr as item}
         <li>{item}</li>
     {/each}
