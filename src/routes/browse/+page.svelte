@@ -26,7 +26,7 @@
             <p id="description">{club.description}</p>
             <SolidButton
                 href="/view/{club.id}"
-                --button-margin="0 auto"
+                --button-margin="5px auto 0px auto"
                 --button-width="50%">
                 View More
             </SolidButton>
@@ -41,6 +41,7 @@
 
     li {
         margin: 1% auto;
+        padding-bottom: 5px;
     }
 
     #description {
