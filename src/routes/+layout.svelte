@@ -216,6 +216,9 @@ class="backdropcontainer">
 
     .dropdown-content a {
         display: block;
+        margin: 1px;
+        border: 1px dotted gray;
+        border-radius: inherit;
         color: black;
         padding: 2px;
         text-decoration: none;
