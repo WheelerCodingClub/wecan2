@@ -66,6 +66,7 @@ class="backdropcontainer">
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/browse">Join a Club</a></li>
                 <li><a href="/me">Account Information</a></li>
+                <li><a href="/new">Create a Club</a></li>
                 <li><a href="/logout">Logout</a></li>
             {:else}
                 <li><a href="/about">About Us</a></li>
