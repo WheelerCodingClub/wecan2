@@ -36,6 +36,7 @@
                         <SolidButton>Account</SolidButton>
                         <div class="dropdown-content">
                             <a href="/me">Account Information</a>
+                            <a href="/new">Create a Club</a>
                             <a href="/logout">Logout</a>
                         </div>
                     </div>
