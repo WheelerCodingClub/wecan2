@@ -6,6 +6,9 @@
     <title>WECAN 2</title>
 </svelte:head>
 
+
+<h1 style="text-align: center;">Homepage or something idk i'm not the one who made this page</h1>
+<br/>
 <Post
     title="Club"
     description="Example"
