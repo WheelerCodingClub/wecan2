@@ -43,7 +43,7 @@
                 </li>
             {:else}
                 <li class="buttonList"><HollowButton href="/about">About Us</HollowButton></li>
-                <li class="buttonList"><HollowButton href="/register?joinRedirect">Join a Club</HollowButton></li>
+                <li class="buttonList"><HollowButton href="/login?joinRedirect">Join a Club</HollowButton></li>
                 <li class="buttonList"><HollowButton href="/login">Log In</HollowButton></li>
                 <li class="buttonList"><SolidButton href="/register">Register</SolidButton></li>
             {/if}
@@ -70,7 +70,7 @@ class="backdropcontainer">
                 <li><a href="/logout">Logout</a></li>
             {:else}
                 <li><a href="/about">About Us</a></li>
-                <li><a href="/register?joinRedirect">Join a Club</a></li>
+                <li><a href="/login?joinRedirect">Join a Club</a></li>
                 <li><a href="/login">Log In</a></li>
                 <li><a href="/register">Register</a></li>
             {/if}
