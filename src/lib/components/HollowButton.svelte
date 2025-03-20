@@ -1,17 +1,29 @@
 <script lang="ts">
-    let {aclass, href, disabled} = $props();
+    let {aclass, href, disabled, children} = $props();
 </script>
 
 {#if href}
     <a
         class={aclass || ""}
         href={href}
-    ><slot>button</slot></a>
+    >
+        {#if children}
+            {@render children()}
+        {:else}
+            button
+        {/if}
+    </a>
 {:else}
     <button
         class={aclass || ""}
         disabled={disabled || ""}
-    ><slot>button</slot></button>
+    >
+        {#if children}
+            {@render children()}
+        {:else}
+            button
+        {/if}
+    </button>
 {/if}
 
 <style>
