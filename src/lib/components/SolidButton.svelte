@@ -1,18 +1,29 @@
-{#if $$props.href}
+<script>
+    let {aclass, href, disabled, children} = $props();
+</script>
+
+{#if href}
     <a
-        class={$$props.class || ""}
-        href={$$props.href}
-    ><slot>button</slot></a>
+        class={aclass || ""}
+        href={href}
+    >
+        {#if children}
+            {@render children()}
+        {:else}
+            <p>fallback content</p>
+        {/if}
+    </a>
 {:else}
     <button
-        class={$$props.class || ""}
-        disabled={$$props.disabled || ""}
-        on:click 
-        on:focus 
-        on:mouseover 
-        on:blur 
-        on:mouseout
-    ><slot>button</slot></button>
+        class={aclass || ""}
+        disabled={disabled || ""}
+    >
+        {#if children}
+            {@render children()}
+        {:else}
+            <p>fallback content</p>
+        {/if}
+    </button>
 {/if}
 
 <style>
