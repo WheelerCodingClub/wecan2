@@ -1,17 +1,16 @@
-{#if $$props.href}
+<script lang="ts">
+    let {aclass, href, disabled} = $props();
+</script>
+
+{#if href}
     <a
-        class={$$props.class || ""}
-        href={$$props.href}
+        class={aclass || ""}
+        href={href}
     ><slot>button</slot></a>
 {:else}
     <button
-        class={$$props.class || ""}
-        disabled={$$props.disabled || ""}
-        on:click
-        on:focus
-        on:mouseover
-        on:blur
-        on:mouseout
+        class={aclass || ""}
+        disabled={disabled || ""}
     ><slot>button</slot></button>
 {/if}
 
