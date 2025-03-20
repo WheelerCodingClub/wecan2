@@ -9,9 +9,14 @@
 
     import hamburgerIcon from "$lib/images/hamburger.svg";
 
-    let mobileDropdown: boolean = false;
+    let mobileDropdown: boolean = $state(false);
 
-    export let data: LayoutData;
+    interface Props {
+        data: LayoutData;
+        children?: import('svelte').Snippet;
+    }
+
+    let { data, children }: Props = $props();
 
     beforeNavigate(() => {
         mobileDropdown = false;
@@ -80,7 +85,7 @@ class="backdropcontainer">
 {/if}
 
 <main class:backdrop={mobileDropdown}>
-    <slot />
+    {@render children?.()}
 </main>
 
 <style>

@@ -9,10 +9,14 @@
     import Carousel from "svelte-carousel";
     import HollowButton from "./HollowButton.svelte";
 
-    export let images: {
+    interface Props {
+        images?: {
         src: string;
         alt: string;
-    }[] = [];
+    }[];
+    }
+
+    let { images = [] }: Props = $props();
 
     let counter: number = 0;
     let carousel: Carousel; // for calling methods of the carousel instance

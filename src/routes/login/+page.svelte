@@ -5,9 +5,13 @@
     import { enhance } from "$app/forms";
     import { fly } from "svelte/transition";
     import { page } from "$app/state";
-    export let form: ActionData;
+    interface Props {
+        form: ActionData;
+    }
 
-    let showPassword: boolean;
+    let { form }: Props = $props();
+
+    let showPassword: boolean = $state();
     const joinRedirect: boolean = page.url.searchParams.has('joinRedirect');
 </script>
 

@@ -2,13 +2,22 @@
     import "$lib/styles/forms.css";
     import Gallery from "$lib/components/Gallery.svelte";
 
-    export let title: string;
-    export let description: string;
-    export let images: {
+    interface Props {
+        title: string;
+        description: string;
+        images?: {
         src: string;
         alt: string;
-    }[] = [];
-    export let club: string;
+    }[];
+        club: string;
+    }
+
+    let {
+        title,
+        description,
+        images = [],
+        club
+    }: Props = $props();
 </script>
 
 <div class="card">
