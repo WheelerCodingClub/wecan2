@@ -10,7 +10,7 @@
         {#if children}
             {@render children()}
         {:else}
-            <p>fallback content</p>
+            button
         {/if}
     </a>
 {:else}
@@ -21,7 +21,7 @@
         {#if children}
             {@render children()}
         {:else}
-            <p>fallback content</p>
+            button
         {/if}
     </button>
 {/if}
