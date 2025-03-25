@@ -1,1 +1,1 @@
-type callable = (...any: any[]) => any
+export type Callable = (...any: any[]) => any
