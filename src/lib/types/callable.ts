@@ -1,0 +1,1 @@
+type callable = (...any: any[]) => any
