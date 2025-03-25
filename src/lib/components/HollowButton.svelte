@@ -1,5 +1,19 @@
 <script lang="ts">
-    let {aclass, href, disabled, children} = $props();
+    import type { Callable } from "$lib/types/callable";
+    interface Props {
+        aclass?: string;
+        href?: string;
+        disabled?: boolean;
+        onclick?: Callable;
+        children?: any;
+    }
+    let {
+        aclass = "",
+        href = "",
+        disabled = false,
+        onclick = () => {},
+        children
+    }: Props = $props();
 </script>
 
 {#if href}
@@ -16,7 +30,8 @@
 {:else}
     <button
         class={aclass || ""}
-        disabled={disabled || ""}
+        {disabled}
+        {onclick}
     >
         {#if children}
             {@render children()}
