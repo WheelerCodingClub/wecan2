@@ -10,7 +10,7 @@
 
     let { form }: Props = $props();
 
-    let showPassword: boolean = $state();
+    let showPassword: boolean = $state(false);
 </script>
 
 <svelte:head>
