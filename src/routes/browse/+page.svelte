@@ -3,7 +3,11 @@
     import type { PageData } from "./$types";
     import SolidButton from "$lib/components/SolidButton.svelte";
 
-    export let data: PageData;
+    interface Props {
+        data: PageData;
+    }
+
+    let { data }: Props = $props();
 </script>
 
 <svelte:head>

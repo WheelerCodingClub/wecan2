@@ -1,18 +1,44 @@
-{#if $$props.href}
+<script lang="ts">
+    import type { Callable } from "$lib/types/callable";
+    interface Props {
+        aclass?: string;
+        href?: string;
+        disabled?: boolean;
+        onclick?: Callable;
+        children?: any;
+    }
+    let {
+        aclass = "",
+        href = "",
+        disabled = false,
+        onclick = () => {},
+        children
+    }: Props = $props();
+</script>
+
+{#if href}
     <a
-        class={$$props.class || ""}
-        href={$$props.href}
-    ><slot>button</slot></a>
+        class={aclass || ""}
+        href={href}
+    >
+        {#if children}
+            {@render children()}
+        {:else}
+            button
+        {/if}
+    </a>
 {:else}
     <button
-        class={$$props.class || ""}
-        disabled={$$props.disabled || ""}
-        on:click 
-        on:focus 
-        on:mouseover 
-        on:blur 
-        on:mouseout
-    ><slot>button</slot></button>
+        class={aclass || ""}
+        {disabled}
+        {onclick}
+    >
+        {#if children}
+            {@render children()}
+        {:else}
+            button
+        {/if}
+    </button>
 {/if}
 
 <style>

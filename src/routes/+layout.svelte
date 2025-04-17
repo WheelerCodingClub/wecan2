@@ -9,9 +9,14 @@
 
     import hamburgerIcon from "$lib/images/hamburger.svg";
 
-    let mobileDropdown: boolean = false;
+    let mobileDropdown: boolean = $state(false);
 
-    export let data: LayoutData;
+    interface Props {
+        data: LayoutData;
+        children?: import('svelte').Snippet;
+    }
+
+    let { data, children }: Props = $props();
 
     beforeNavigate(() => {
         mobileDropdown = false;
@@ -49,7 +54,7 @@
             {/if}
         </ul>
         <div class="mobile links-right">
-            <HollowButton on:click={() => mobileDropdown = !mobileDropdown}>
+            <HollowButton onclick={() => mobileDropdown = !mobileDropdown}>
                 <img src={hamburgerIcon} alt="hamburger icon">
                 <!--source: https://www.iconfinder.com/icons/134216/menu_lines_hamburger_icon-->
             </HollowButton>
@@ -80,7 +85,7 @@ class="backdropcontainer">
 {/if}
 
 <main class:backdrop={mobileDropdown}>
-    <slot />
+    {@render children?.()}
 </main>
 
 <style>

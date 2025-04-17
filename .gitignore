@@ -24,3 +24,5 @@ pnpm-lock.yaml
 
 # macOS
 .DS_Store
+
+pnpm-lock.yaml
