@@ -5,9 +5,10 @@
     import { enhance } from "$app/forms";
     import { fly } from "svelte/transition";
     import { page } from "$app/state";
-    export let form: ActionData;
 
-    let showPassword: boolean;
+    let form: ActionData = $props();
+
+    let showPassword: boolean = $state(false);
     const joinRedirect: boolean = page.url.searchParams.has('joinRedirect');
 </script>
 
@@ -45,3 +46,9 @@
 {#if form?.success}
     <p>Logged in successfully.</p>
 {/if}
+
+<style>
+    h3 {
+        text-align: center;
+    }
+</style>

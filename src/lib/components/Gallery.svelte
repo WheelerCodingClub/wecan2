@@ -9,12 +9,16 @@
     import Carousel from "svelte-carousel";
     import HollowButton from "./HollowButton.svelte";
 
-    export let images: {
+    interface Props {
+        images?: {
         src: string;
         alt: string;
-    }[] = [];
+    }[];
+    }
 
-    let counter: number = 0;
+    let { images = [] }: Props = $props();
+
+    let counter: number = $state(0);
     let carousel: Carousel; // for calling methods of the carousel instance
     
     const handleNextClick = () => {
@@ -22,21 +26,21 @@
     };
 </script>
 
-<!--
+
 <div class="card">
     {#if images}
         <img src={images[counter].src} alt={images[counter].alt}>
         <div class="button-container">
             <HollowButton
-                on:click={() => counter--}
+                onclick={() => counter--}
                 disabled={counter === 0}>&lt;</HollowButton>
             <HollowButton
-                on:click={() => counter++}
+                onclick={() => counter++}
                 disabled={counter === images.length - 1}>&gt;</HollowButton>
         </div>
     {/if}
 </div>
--->
+
 
 <style>
     .card {

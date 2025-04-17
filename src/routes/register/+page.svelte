@@ -4,9 +4,13 @@
     import SolidButton from "$lib/components/SolidButton.svelte";
     import { enhance } from "$app/forms";
     import { fly } from "svelte/transition";
-    export let form: ActionData;
+    interface Props {
+        form: ActionData;
+    }
 
-    let showPassword: boolean;
+    let { form }: Props = $props();
+
+    let showPassword: boolean = $state(false);
 </script>
 
 <svelte:head>

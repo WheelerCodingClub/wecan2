@@ -4,7 +4,11 @@
     import SolidButton from "$lib/components/SolidButton.svelte";
     import { enhance } from "$app/forms";
     
-    export let form: ActionData;
+    interface Props {
+        form: ActionData;
+    }
+
+    let { form }: Props = $props();
 </script>
 
 <form method="POST" use:enhance>
