@@ -54,7 +54,7 @@
             {/if}
         </ul>
         <div class="mobile links-right">
-            <HollowButton on:click={() => mobileDropdown = !mobileDropdown}>
+            <HollowButton onclick={() => mobileDropdown = !mobileDropdown}>
                 <img src={hamburgerIcon} alt="hamburger icon">
                 <!--source: https://www.iconfinder.com/icons/134216/menu_lines_hamburger_icon-->
             </HollowButton>
