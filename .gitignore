@@ -15,7 +15,6 @@ vite.config.ts.timestamp-*
 /.replit/
 /.replit.nix
 /.vscode/settings.json
-pnpm-lock.yaml
 # data
 *.sqlite
 *.sqlite3
