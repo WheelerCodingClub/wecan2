@@ -1,0 +1,1 @@
+TODO:	Add ways to delete accounts and clubs respectively.
