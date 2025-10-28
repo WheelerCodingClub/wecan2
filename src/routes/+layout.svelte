@@ -23,7 +23,7 @@
     });
 </script>
 
-<nav data-sveltekit-reload>
+<nav>
     <div class="container">
         <ul class="links-left">
             {#if data.loggedIn}
