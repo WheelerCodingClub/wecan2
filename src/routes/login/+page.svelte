@@ -9,7 +9,7 @@
     let form: ActionData = $props();
 
     let showPassword: boolean = $state(false);
-    const joinRedirect: boolean = page.url.searchParams.has('joinRedirect');
+    let joinRedirect: boolean = $derived(page.url.searchParams.has('joinRedirect'));
 </script>
 
 <svelte:head>
