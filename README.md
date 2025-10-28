@@ -32,7 +32,7 @@ This will be a website where people can post their clubs and activities on, and 
 
 ### Setting up the environment
 
-1. [Install Node.js](https://nodejs.org/en/download/package-manager).
+1. [Install Node.js<24.x](https://nodejs.org/en/download/package-manager).
 2. [Install pnpm](https://pnpm.io/installation).
 3. Install [SQLite](https://www.sqlite.org/download.html). On many Linux distributions, the package is simply named `sqlite` or `sqlite3`. On Windows, you may install it by running `winget install SQLite.SQLite` in the command prompt.
 4. Clone the repository:
