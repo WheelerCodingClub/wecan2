@@ -5,7 +5,7 @@
 	"type": "module",
 	"packageManager": "pnpm@10.6.5",
 	"engines": {
-		"node": "<24.x"
+		"node": "<26.x"
 	},
 	"scripts": {
 		"dev": "vite dev",
@@ -17,24 +17,24 @@
 		"generate": "drizzle-kit generate"
 	},
 	"dependencies": {
-		"bcrypt": "^5.1.1",
-		"better-sqlite3": "^11.9.1",
-		"drizzle-orm": "^0.40.1",
-		"jsonwebtoken": "^9.0.2"
+		"bcrypt": "^6.0.0",
+		"better-sqlite3": "^12.8.0",
+		"drizzle-orm": "^0.45.1",
+		"jsonwebtoken": "^9.0.3"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-node": "^5.2.12",
-		"@sveltejs/kit": "^2.20.8",
-		"@sveltejs/vite-plugin-svelte": "^5.0.3",
-		"@types/bcrypt": "^5.0.2",
+		"@sveltejs/adapter-node": "^5.5.4",
+		"@sveltejs/kit": "^2.55.0",
+		"@sveltejs/vite-plugin-svelte": "^7.0.0",
+		"@types/bcrypt": "^6.0.0",
 		"@types/better-sqlite3": "^7.6.13",
-		"@types/jsonwebtoken": "^9.0.9",
-		"drizzle-kit": "^0.30.6",
-		"svelte": "^5.28.2",
+		"@types/jsonwebtoken": "^9.0.10",
+		"drizzle-kit": "^0.31.9",
+		"svelte": "^5.53.12",
 		"svelte-carousel": "^1.0.25",
-		"svelte-check": "^4.1.7",
-		"typescript": "^5.8.3",
-		"vite": "^6.3.5"
+		"svelte-check": "^4.4.5",
+		"typescript": "^5.9.3",
+		"vite": "^8.0.0"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
